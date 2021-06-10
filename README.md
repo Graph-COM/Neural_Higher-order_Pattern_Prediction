@@ -1,4 +1,4 @@
-# HIT
+# Neural Higher-order Pattern(Motif) Prediction in Temporal Networks
 
 # Requirements
 * `python = 3.7`, `PyTorch = 1.4`, please refer to their official websites for installation details.
@@ -34,7 +34,7 @@ python preprocess.py -d <dataset>
 
 After preprocessing the dataset, we can run the code for three different questions.
 ## For Q1 type prediction
-The task aims to solve the Q1 in the paper. What type of high-order interaction will most likely appear among 𝑢, 𝑣, 𝑤 within (𝑡, 𝑡 + 𝑇_𝑤]?
+The task aims to solve the Q1 in the paper. What type of high-order interaction will most likely appear among u,v,w within (t, t + T_W]?
 
 ```{bash}
 export OMP_NUM_THREADS=1
@@ -44,11 +44,12 @@ python main.py -d tags-ask-ubuntu
 The output will be in the log file. We will both report the AUC and the confusion matrix.
 
 ## For Q2 time prediction
-The task aims to solve the Q2 in the paper. For a triplet ({𝑢, 𝑣 },𝑤, 𝑡 ), given an interaction pattern in {Wedge, Triangle, Closure}, when will 𝑢, 𝑣,𝑤 first form such
+The task aims to solve the Q2 in the paper. For a triplet ({u, v}, w, t), given an interaction pattern in {Wedge, Triangle, Closure}, when will u, v, w first form such
 a pattern?
 
 ```{bash}
 export OMP_NUM_THREADS=1
+mkdir time_prediction_output
 python main.py -d tags-ask-ubuntu --time_prediction --time_prediction_type <time_prediction_type>
 ```
 ## Optional arguments
@@ -63,6 +64,7 @@ We report the NLL loss and MSE for training, validating, and testing sets.
 ## For Q3 interpretation
 ```{bash}
 export OMP_NUM_THREADS=1
+mkdir interpretation_output
 python main.py -d tags-ask-ubuntu --interpretation --interpretation_type 1
 ```
 
@@ -82,6 +84,26 @@ Finding edges, wedges, triangles, and closures process is in th utils.py. Since 
 
 Our model achieves the following performance on :
 
-| Model name         |   tags-math-sx  | tags-ask-ubuntu |   congress-bills  |      DAWN      |  threads-ask-ubuntu  |
-| ------------------ |---------------- | --------------- |
-| HIT                |    77.5% $\pm$ 0.31     |      81.62 $\pm$ 0.69      |
+| Model name         |    tags-math-sx   | tags-ask-ubuntu |   congress-bills   |      DAWN       |  threads-ask-ubuntu  |
+| ------------------ | ----------------- | --------------- | ------------------ |---------------- | -------------------- |
+| HIT                |     77.05 ± 0.31    |   81.62 ± 0.69   |     81.10 ± 0.26    |   76.50 ± 0.79   |      86.25 ± 0.15     |
+
+# Main code and functions
+    
+## preprocess.py
+the preprocess of data. Transform the hypergraph to the graph.
+
+## main.py 
+the main code, including finding patterns and train/validate/test the model.
+
+## train.py
+the main training code.
+
+## module.py
+different modules, including the HIT class, classifiers, self-attention pooling, and sum pooling.
+
+## utils.py
+functions, including early stopper, ROC score function, preprocess the dataset, finding patterns and Dataset class.
+
+## parser.py
+parsers
