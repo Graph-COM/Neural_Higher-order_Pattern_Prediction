@@ -1,0 +1,1718 @@
+1704	Dayton, Mark [MN]
+306	WHITE
+1316	Ford, Harold E., Jr. [TN-9]
+1090	Brown, Corrine [FL-3]
+1333	Meeks, Gregory W. [NY-6]
+29	ROBINSON
+1671	Seymour, John [CA]
+1131	Margolies-Mezvinsky, Marjorie [PA-13]
+74	Conte, Silvio O. [MA-1]
+1662	Bryan, Richard H. [NV]
+1265	Hutchinson, Asa [AR-3]
+905	Mfume, Kweisi [MD-7]
+176	Yates, Sidney R. [IL-9]
+1469	Carter, John R. [TX-31]
+892	Lightfoot, Jim [IA-5]
+285	Pickle, J. J. [TX-10]
+1461	Bell, Chris [TX-25]
+1693	Cleland, Max [GA]
+1481	Bonner, Jo [AL-1]
+318	BEARD, R.
+1124	Torkildsen, Peter G. [MA-6]
+1337	Moran, Jerry [KS-1]
+873	DIOGUARDI
+1273	Cannon, Chris [UT-3]
+975	Payne, Donald M. [NJ-10]
+354	ASHBROOK
+610	Bereuter, Doug [NE-1]
+1442	Beauprez, Bob [CO-7]
+563	SAWYER
+1451	Renzi, Rick [AZ-1]
+1082	Shepherd, Karen [UT-2]
+880	GROTBERG
+1194	Wicker, Roger F. [MS-1]
+671	CAMPBELL
+721	McCollum, Bill [FL-8]
+930	Saiki, Patricia [HI-1]
+117	PERKINS
+1195	Kelly, Sue W. [NY-19]
+1386	Simmons, Rob [CT-2]
+1400	Hart, Melissa A. [PA-4]
+284	ROUSSELOT
+1327	Bono, Mary [CA-45]
+1588	HRUSKA
+1144	Becerra, Xavier [CA-31]
+1714	Pryor, Mark Lunsford [AR]
+474	MOFFETT
+1116	Lazio, Rick [NY-2]
+1374	Baca, Joe [CA-43]
+1581	STAFFORD
+188	PRICE
+589	AMMERMAN
+685	GRAMM
+782	Feighan, Edward F. [OH-19]
+1616	ZORINSKY
+621	Roth, Toby [WI-8]
+617	LOEFFLER
+353	WILSON, B.
+797	Tallon, Robert M. (Robin) [SC-6]
+1446	Davis, Lincoln [TN-4]
+430	NOWAK
+1166	Buyer, Steve [IN-5]
+1329	Sununu, John E. [NH]
+79	FISH
+1640	D'Amato, Alfonse [NY]
+1479	Alexander, Rodney [LA-5]
+71	BURKE (FLA.)
+154	MCCORMACK
+1331	Thune, John R. [SD]
+1127	Grams, Rod [MN]
+184	Cohen, William S. [ME]
+1664	Kohl, Herb [WI]
+794	Schaefer, Dan [CO-6]
+1301	Lampson, Nick [TX-9]
+1683	Abraham, Spencer [MI]
+908	Jontz, Jim [IN-5]
+845	Sundquist, Don [TN-7]
+733	DUNN
+1705	Carnahan, Jean [MO]
+107	CHISHOLM
+1648	Rudman, Warren [NH]
+416	Murtha, John P. [PA-12]
+682	WYATT
+10	FOUNTAIN
+294	ST GERMAIN
+1426	Putnam, Adam H. [FL-12]
+606	Natcher, William H. [KY-2]
+642	STEWART, B.
+162	Lott, Trent [MS]
+881	McMillan, J. Alex [NC-9]
+1510	SPARKMAN
+240	Gaydos, Joseph M. [PA-20]
+974	James, Craig T. [FL-4]
+917	Inhofe, Jim [OK]
+966	Parker, Mike [MS-4]
+980	Jones, Ben [GA-4]
+261	Lent, Norman F. [NY-4]
+1102	Miller, Dan [FL-13]
+514	MYERS, GARY A.
+5	EILBERG
+1512	CRANSTON
+1146	Harman, Jane [CA-36]
+840	Penny, Timothy J. [MN-1]
+1358	Fletcher, Ernie [KY-6]
+41	CAREY
+15	Coughlin, Lawrence [PA-13]
+1230	Chrysler, Dick [MI-8]
+461	RICHMOND
+148	FUQUA
+1097	English, Karan [AZ-6]
+776	Boehlert, Sherwood L. [NY-25]
+1135	Dickey, Jay [AR-4]
+957	Payne, Lewis F., Jr. [VA-5]
+1324	Pickering, Charles W. (Chip) [MS-3]
+586	Oakar, Mary Rose [OH-20]
+66	DUNCAN, J.
+1488	Murphy, Tim [PA-18]
+573	EVANS, B.
+1410	Davis, Jo Ann [VA-1]
+1460	ICPSR-20309
+512	SHARP
+1158	Pombo, Richard W. [CA-11]
+95	GILMAN
+236	Gonzalez, Henry B. [TX-20]
+1503	COOK
+90	GRASSO
+111	MITCHELL, P.
+844	Cooper, Jim [TN-5]
+1527	SCOTT
+14	Alexander, Bill [AR-1]
+933	Lukens, Donald E. [OH-8]
+1598	Glenn, John H., Jr. [OH]
+396	Armstrong, William L. [CO]
+256	KING
+1505	BUCKLEY
+1136	Canady, Charles T. [FL-12]
+1201	Graham, Lindsey O. [SC]
+1712	Jeffords, James M. [VT]
+1017	Klug, Scott L. [WI-2]
+1141	McKeon, Howard P. (Buck) [CA-25]
+592	Marlenee, Ron [MT-2]
+973	Hancock, Mel [MO-7]
+1052	Coppersmith, Sam [AZ-1]
+1418	Pence, Mike [IN-6]
+655	Pashayan, Charles, Jr. [CA-17]
+565	CORCORAN
+1199	Watts, J. C., Jr. [OK-4]
+620	MICA
+763	Rogers, Harold [KY-5]
+1240	LoBiondo, Frank A. [NJ-2]
+549	Skelton, Ike [MO-4]
+135	Annunzio, Frank [IL-11]
+125	HENDERSON
+965	Johnston, Harry [FL-19]
+146	SEIBERLING
+130	GUDE
+1148	Manzullo, Donald A. [IL-16]
+545	Murphy, Austin J. [PA-22]
+1387	McCollum, Betty [MN-4]
+660	KOGOVSEK
+1475	Diaz-Balart, Mario [FL-25]
+1062	Collins, Mac [GA-3]
+453	Florio, James J. [NJ-1]
+1100	Fowler, Tillie [FL-4]
+1247	Burr, Richard [NC-5]
+110	BADILLO
+1445	Garrett, Scott [NJ-5]
+309	THONE
+99	VANIK
+981	McNulty, Michael R. [NY-23]
+1150	Linder, John [GA-11]
+1349	Crowley, Joseph [NY-7]
+525	de la Garza, E. [TX-15]
+1029	Brewster, Bill K. [OK-3]
+1286	Capps, Lois [CA-22]
+899	Rowland, John G. [CT-5]
+366	Collins, Cardiss [IL-7]
+556	Markey, Edward J. [MA-7]
+128	Adams, Brock [WA]
+9	DERWINSKI
+1417	Ferguson, Mike [NJ-7]
+1634	Pryor, David H. [AR]
+348	MACDONALD
+831	Towns, Edolphus [NY-11]
+736	Hatcher, Charles [GA-2]
+183	BOWEN
+522	Quillen, James H. (Jimmy) [TN-1]
+591	Stangeland, Arlan [MN-7]
+860	Manton, Thomas J. [NY-9]
+1179	Forbes, Michael P. [NY-1]
+103	Conyers, John, Jr. [MI-14]
+931	Smith, Lamar [TX-21]
+345	SMITH (N. Y.)
+152	BROWN, C.
+742	ROBERTS, C.
+1043	Peterson, Collin C. [MN-7]
+723	Oxley, Michael G. [OH-4]
+1348	Holt, Rush D. [NJ-12]
+843	Olin, James R. [VA-6]
+1643	Nickles, Don [OK]
+730	CHAPPIE
+1276	DeGette, Diana [CO-1]
+1484	Butterfield, G. K. [NC-1]
+982	Sarpalius, Bill [TX-13]
+732	DREIER
+1703	Corzine, Jon [NJ]
+941	Slaughter, Louise McIntosh [NY-30]
+667	Hall, Tony P. [OH-3]
+911	Grandy, Fred [IA-6]
+1618	Sasser, Jim [TN]
+795	Sisisky, Norman [VA-4]
+1003	Reed, John F. [RI]
+1536	BYRD, H.
+832	Wheat, Alan [MO-5]
+846	Ortiz, Solomon P. [TX-27]
+1008	Ramstad, Jim [MN-3]
+454	JACOBS
+191	ROYBAL
+1274	Deal, Nathan [GA-10]
+1677	Coverdell, Paul [GA]
+312	Wilson, Charles [TX-2]
+1599	HART
+663	Nelson, Bill [FL]
+446	Neal, Stephen L. [NC-5]
+751	Gunderson, Steve [WI-3]
+1672	Feinstein, Dianne [CA]
+918	Ballenger, Cass [NC-10]
+276	MURPHY, M.
+659	Hopkins, Larry J. [KY-6]
+508	HOLLAND
+602	Jenkins, Edgar L. [GA-9]
+1074	Hinchey, Maurice D. [NY-26]
+1368	Reynolds, Thomas M. [NY-27]
+1465	Burgess, Michael C. [TX-26]
+241	GOLDWATER
+370	Regula, Ralph [OH-16]
+1444	Chocola, Chris [IN-2]
+1608	ANDERSON
+197	Heinz, John [PA]
+1072	Velazquez, Nydia M. [NY-12]
+593	PETTIS, SHIRLEY N.
+654	Lewis, Jerry [CA-40]
+624	ROYER
+1369	Biggert, Judy [IL-13]
+142	HANSEN (IDAHO)
+935	Brennan, Joseph E. [ME-1]
+1049	Allen, George [VA]
+848	Boucher, Rick [VA-9]
+1375	Thompson, Mike [CA-1]
+956	McCrery, Jim [LA-5]
+1055	Eshoo, Anna G. [CA-14]
+614	Gingrich, Newt [GA-6]
+1694	Hagel, Chuck [NE]
+718	Dorgan, Byron L. [ND]
+1638	Gorton, Slade [WA]
+818	Packard, Ron [CA-48]
+372	SKUBITZ
+612	Daschle, Thomas A. [SD]
+1457	Pearce, Stevan [NM-2]
+433	Solarz, Stephen J. [NY-13]
+664	Sabo, Martin Olav [MN-5]
+1107	Nadler, Jerrold [NY-8]
+677	Stenholm, Charles W. [TX-17]
+1652	Bingaman, Jeff [NM]
+279	Owens, Wayne [UT-2]
+700	LEBOUTILLIER
+368	BUTLER
+1381	Toomey, Patrick J. [PA-15]
+609	BAILEY, D.
+1563	RIBICOFF
+1191	Chambliss, Saxby [GA]
+885	Chapman, Jim [TX-1]
+922	Hastert, J. Dennis [IL-14]
+1227	Tate, Randy [WA-9]
+1540	FONG
+890	Fawell, Harris W. [IL-13]
+958	Costello, Jerry F. [IL-21]
+1604	LAXALT
+916	Weldon, Curt [PA-7]
+672	HINSON
+1228	Hostettler, John N. [IN-8]
+963	Grant, Bill [FL-2]
+94	DENHOLM
+290	SAYLOR
+650	SHANNON
+115	LUJAN
+607	GARCIA
+418	JONES (ALA.)
+373	MCCLOSKEY
+171	CLAUSEN, DON H.
+455	OTTINGER
+824	HALL, K.
+750	Gregg, Judd [NH]
+334	Breaux, John B. [LA]
+1572	MCGOVERN
+641	DOUGHERTY
+1645	MATTINGLY
+1091	Diaz-Balart, Lincoln [FL-21]
+1496	MILLS (MD.)
+178	CASEY
+426	BURTON (CALIF.)
+1710	Murkowski, Lisa [AK]
+1211	Fattah, Chaka [PA-2]
+313	YOUNG (TEX.)
+503	FITHIAN
+551	BADHAM
+1098	Farr, Sam [CA-17]
+1463	Feeney, Tom [FL-24]
+493	Ford, Harold E. [TN-9]
+577	Walker, Robert S. [PA-16]
+113	STUDDS
+293	STEED
+914	McMillen, Thomas [MD-4]
+859	GRAY, K.
+1538	EAGLETON
+1637	Dixon, Alan J. [IL]
+1209	Chabot, Steve [OH-1]
+297	SCHERLE
+507	FISHER
+1288	Sandlin, Max [TX-1]
+471	McHugh, Matthew F. [NY-28]
+707	SMITH, A.
+1548	Johnston, J. Bennett [LA]
+1655	Rockefeller, Jay [WV]
+393	HEBERT
+497	Baucus, Max [MT]
+1177	Souder, Mark E. [IN-4]
+1167	Istook, Ernest J., Jr. [OK-5]
+1559	TUNNEY
+1602	Ford, Wendell H. [KY]
+274	MANN
+1073	Maloney, Carolyn B. [NY-14]
+1118	Hilliard, Earl F. [AL-7]
+1624	JEPSEN
+28	KEATING
+1115	Byrne, Leslie L. [VA-11]
+634	Donnelly, Brian J. [MA-11]
+1255	Martini, William J. [NJ-8]
+1252	White, Rick [WA-1]
+1522	MCGEE
+97	BRADEMAS
+1449	Van Hollen, Chris [MD-8]
+1430	Otter, C. L. (Butch) [ID-1]
+377	MAYNE
+584	EVANS, T.
+1245	Ganske, Greg [IA-4]
+1715	AIKEN
+1382	Sherwood, Don [PA-10]
+1560	BAYH
+39	RODINO
+1437	Michaud, Michael H. [ME-2]
+1018	Swett, Dick [NH-2]
+58	HANSEN (WASH.)
+1044	Edwards, Chet [TX-11]
+867	Traficant, James A., Jr. [OH-17]
+8	FREY
+333	GROVER
+739	Shaw, E. Clay, Jr. [FL-22]
+1114	Johnson, Eddie Bernice [TX-30]
+428	ARENDS
+1506	GOLDWATER
+1330	Watkins, Wes [OK-3]
+1607	PEARSON
+254	LANDRUM
+628	Fazio, Vic [CA-4]
+185	DANIEL, R.
+635	CARNEY
+1702	Clinton, Hillary Rodham [NY]
+20	Frenzel, Bill [MN-3]
+1594	SYMINGTON
+868	Bruce, Terry L. [IL-19]
+1644	HAWKINS
+1134	Lincoln, Blanche [AR]
+774	Berman, Howard L. [CA-28]
+849	Valentine, Tim [NC-2]
+266	MILLS
+421	LUKEN
+451	BEARD, E.
+166	THOMSON
+397	BAUMAN
+35	RANDALL
+1126	Knollenberg, Joe [MI-11]
+1157	Fields, Cleo [LA-4]
+1054	Woolsey, Lynn C. [CA-6]
+1109	Watt, Melvin L. [NC-12]
+1440	Meek, Kendrick B. [FL-17]
+1571	HUMPHREY
+816	Moody, Jim [WI-5]
+286	ROONEY
+145	HUNT
+392	ROONEY (N. Y.)
+554	Vento, Bruce F. [MN-4]
+1441	Grijalva, Raul M. [AZ-7]
+1494	KUYKENDALL
+346	STRATTON
+1064	Rush, Bobby L. [IL-1]
+86	Schroeder, Patricia [CO-1]
+126	CLEVELAND
+1233	Salmon, Matt [AZ-1]
+587	Watkins, Wes [OK-3]
+1708	Alexander, Lamar [TN]
+303	WIDNALL
+82	COTTER
+1656	McConnell, Mitch [KY]
+1682	Thompson, Fred [TN]
+567	STUMP
+75	ROSENTHAL
+872	COBEY
+883	Armey, Richard K. [TX-26]
+1492	NELSEN
+701	Lowery, Bill [CA-41]
+87	DENT
+237	FULTON
+594	Barnard, Doug, Jr. [GA-10]
+386	MITCHELL, D.
+510	KREBS
+613	ERDAHL
+668	Snowe, Olympia J. [ME]
+1502	SCOTT (PA.)
+947	Kyl, Jon [AZ]
+1530	GRIFFIN
+347	STAGGERS
+1639	Specter, Arlen [PA]
+1213	Ensign, John E. [NV]
+517	BURLISON
+1691	Landrieu, Mary [LA]
+1698	Voinovich, George V. [OH]
+949	Baker, Richard H. [LA-6]
+1551	Packwood, Bob [OR]
+523	Schulze, Richard T. [PA-5]
+1603	Garn, E. J. (Jake) [UT]
+1059	Deutsch, Peter [FL-20]
+1309	Tauscher, Ellen O. [CA-10]
+1580	SCHWEIKER
+504	Hubbard, Carroll, Jr. [KY-1]
+98	SEBELIUS
+1543	HATHAWAY
+666	Davis, Robert W. [MI-11]
+792	Reid, Harry M. [NV]
+1101	Thurman, Karen L. [FL-5]
+1713	Cornyn, John [TX]
+540	Dornan, Robert K. [CA-46]
+161	KETCHUM
+952	Nagle, Dave R, [IA-3]
+389	WILLIAMS
+22	ICHORD
+73	KOCH
+119	RUPPE
+598	CUNNINGHAM
+1392	Clay, Wm. Lacy [MO-1]
+222	Bevill, Tom [AL-4]
+562	Akaka, Daniel K. [HI]
+53	Moakley, John Joseph [MA-9]
+646	FERRARO
+580	IRELAND
+687	Porter, John Edward [IL-10]
+1514	WILLIAMS, H.
+869	Bustamante, Albert G. [TX-23]
+640	Dixon, Julian C. [CA-32]
+502	HANSEN, G.
+498	HALL (ILL.)
+305	WYMAN
+745	Bliley, Tom [VA-7]
+603	TUCKER
+1325	Tauzin, W. J. (Billy) [LA-3]
+27	WARE
+1423	Kerns, Brian D. [IN-7]
+1271	Granger, Kay [TX-12]
+1690	Smith, Gordon [OR]
+1629	Bradley, Bill [NJ]
+1564	Roth Jr., William V. [DE]
+134	SHOUP
+215	MATHIS
+1248	Coburn, Tom A. [OK-2]
+131	STUCKEY
+391	ANDREWS, I.
+249	HOWARD
+882	STRANG
+207	RHODES
+1532	EASTLAND
+173	DIGGS
+542	Mikulski, Barbara A. [MD]
+499	Miller, George [CA-7]
+201	MARTIN (N. C.)
+477	Grassley, Charles E. [IA]
+1261	Stabenow, Debbie [MI]
+1565	WEICKER
+1151	Hoke, Martin R. [OH-10]
+876	HENDON
+31	MALLARY
+1015	Zimmer, Dick [NJ-12]
+1401	Langevin, James R. [RI-2]
+70	WHALEN
+597	Livingston, Bob [LA-1]
+625	BARNES
+33	PATMAN
+1129	King, Peter T. [NY-3]
+1454	Burns, Max [GA-12]
+886	Atkins, Chester G. [MA-5]
+1636	Warner, John W. [VA]
+1385	Schiff, Adam B. [CA-29]
+1218	Ward, Mike [KY-3]
+1338	Pease, Edward A. [IN-7]
+1513	PROXMIRE
+1189	Seastrand, Andrea H. [CA-22]
+1117	Bachus, Spencer [AL-6]
+1031	Boehner, John A. [OH-8]
+1326	Fossella, Vito [NY-13]
+1689	Collins, Susan M. [ME]
+473	CORNELL
+1490	Herseth, Stephanie [SD]
+1060	Hastings, Alcee L. [FL-23]
+327	METCALFE
+511	LEVITAS
+1170	Scarborough, Joe [FL-1]
+1164	Ehlers, Vernon J. [MI-3]
+978	Schiff, Steven [NM-1]
+230	CLAWSON, DEL
+780	DeWine, Michael [OH]
+951	Hefley, Joel [CO-5]
+773	Bateman, Herbert H. [VA-1]
+1545	Hollings, Ernest F. [SC]
+1412	Lynch, Stephen F. [MA-9]
+720	Hunter, Duncan [CA-52]
+50	Roe, Robert A. [NJ-8]
+80	ABZUG
+326	MINISH
+248	HOLIFIELD
+513	Smith, Virginia [NE-3]
+1420	Ross, Mike [AR-4]
+1520	HANSEN
+1699	Bayh, Evan [IN]
+1216	Christensen, Jon [NE-2]
+412	VAN DEERLIN
+447	SPELLMAN
+555	HOLLENBECK
+1188	Radanovich, George P. [CA-19]
+401	FRELINGHUYSEN
+217	Spence, Floyd [SC-2]
+855	Coleman, Ronald D. [TX-16]
+847	BARTLETT
+786	Levin, Sander M. [MI-17]
+1613	LUGAR
+506	Hyde, Henry J. [IL-6]
+1517	CHURCH
+120	HOGAN
+822	ZSCHAU
+681	Hutto, Earl [FL-1]
+1354	Ose, Doug [CA-3]
+1487	Gerlach, Jim [PA-6]
+1558	TOWER
+1668	Wellstone, Paul D. [MN]
+167	Aspin, Les [WI-1]
+903	Visclosky, Peter J. [IN-1]
+143	DEVINE
+1076	Pryce, Deborah [OH-15]
+62	FRASER
+1447	Blackburn, Marsha [TN-7]
+21	MAILLIARD
+996	Thomas, Craig [WY]
+1094	Inslee, Jay [WA-4]
+1459	Barrett, J. Gresham [SC-3]
+548	MARKS
+1355	Kuykendall, Steven T. [CA-36]
+280	POAGE
+260	KAZEN
+1611	Hatch, Orrin G. [UT]
+961	Machtley, Ronald K. [RI-1]
+761	Martin, Lynn M. [IL-16]
+251	GUYER
+1174	Norwood, Charlie [GA-10]
+1293	Blunt, Roy [MO-7]
+1684	Bennett, Robert F. [UT]
+463	KEYS
+1250	Bryant, Ed [TN-7]
+649	RATCHFORD
+438	LAFALCE
+1614	SCHMITT
+656	GRISHAM
+766	Wolf, Frank R. [VA-10]
+1508	HUDDLESTON
+1670	Burdick, Quentin N. [ND]
+757	Fields, Jack [TX-8]
+699	Lantos, Tom [CA-12]
+1372	Sweeney, John E. [NY-22]
+55	PEYSER
+909	Lewis, John [GA-5]
+1034	Barrett, Bill [NE-3]
+1579	FULBRIGHT
+1589	SAXBE
+155	Moorhead, Carlos J. [CA-27]
+569	Kildee, Dale E. [MI-9]
+694	DWYER
+1625	Levin, Carl [MI]
+709	WEBER, V.
+728	Crockett, George W., Jr. [MI-13]
+344	GERALD R. FORD
+787	Lewis, Thomas F. [FL-16]
+747	NAPIER
+1654	Kerry, John F. [MA]
+1471	Rogers, Mike D. [AL-3]
+1576	ABOUREZK
+483	MCDONALD
+253	JOHNSON (CALIF.)
+205	MARAZITI
+258	LONG, G.
+929	Ravenel, Arthur, Jr. [SC-1]
+1079	Holden, Tim [PA-17]
+1161	McHale, Paul [PA-15]
+1498	CANNON
+1610	DeConcini, Dennis [AZ]
+1584	BAKER
+1120	Roybal-Allard, Lucille [CA-34]
+815	MCKERNAN
+1542	Hatfield, Mark O. [OR]
+269	PATTEN
+452	Carr, Bob [MI-8]
+492	HOWE
+65	BINGHAM
+202	CARTER
+44	STEPHENS
+324	CULVER
+1056	Filner, Bob [CA-51]
+1322	Kind, Ron [WI-3]
+192	WILSON, C. H.
+729	Brown, Hank [CO]
+858	Bentley, Helen Delich [MD-2]
+13	BLACKBURN
+901	Slaughter, D. French, Jr. [VA-7]
+270	Mink, Patsy T. [HI-2]
+1080	Greenwood, James C. [PA-8]
+647	Guarini, Frank J. [NJ-14]
+137	GREEN (ORE.)
+1367	Gonzalez, Charles A. [TX-20]
+339	TEAGUE (CALIF.)
+105	ECKHARDT
+1547	JACKSON
+1619	Danforth, John C. [MO]
+765	STATON
+800	Mollohan, Alan B. [WV-1]
+307	WINN
+1448	Neugebauer, Randy [TX-19]
+1027	Waters, Maxine [CA-35]
+1467	Kline, John [MN-2]
+1485	Nunes, Devin [CA-21]
+379	BRECKINRIDGE
+352	Whitten, Jamie L. [MS-1]
+273	NICHOLS
+1143	Portman, Rob [OH-2]
+1032	Luken, Charles [OH-1]
+1323	Lee, Barbara [CA-9]
+1606	STONE
+38	Fascell, Dante B. [FL-19]
+118	HANLEY
+648	Mavroules, Nicholas [MA-6]
+553	Glickman, Dan [KS-4]
+570	Coleman, E. Thomas [MO-6]
+1223	LaTourette, Steve C. [OH-19]
+821	Thomas, Lindsay [GA-1]
+826	Bates, Jim [CA-44]
+1182	Fox, Jon D. [PA-13]
+902	Gordon, Bart [TN-6]
+715	NELLIGAN
+100	Pepper, Claude [FL-18]
+411	KARTH
+904	LONG, C.
+81	BYRON
+1555	STEVENS
+790	Morrison, Bruce A. [CT-3]
+1159	Mica, John L. [FL-7]
+1346	Shows, Ronnie [MS-4]
+1343	Hill, Baron P. [IN-9]
+19	DANIELSON
+268	NEDZI
+243	GINN
+424	ULLMAN
+535	Kostmayer, Peter H. [PA-8]
+1612	HAYAKAWA
+317	ESCH
+686	Synar, Mike [OK-2]
+1084	Cantwell, Maria [WA]
+676	Matsui, Robert T. [CA-5]
+163	DAVIS (WISC.)
+1661	Sanford, Terry [NC]
+1425	Miller, Jeff [FL-1]
+861	BARTON
+108	Clay, William (Bill) [MO-1]
+1105	Minge, David [MN-2]
+1053	Hamburg, Dan [CA-1]
+329	BERGLAND
+89	MURPHY, J.
+1242	Bunn, Jim [OR-5]
+1262	Kilpatrick, Carolyn C. [MI-15]
+924	Herger, Wally [CA-2]
+1128	Franks, Bob [NJ-7]
+755	EMERSON
+1312	Rodriguez, Ciro [TX-28]
+144	CLANCY
+735	FIEDLER
+1239	Longley, James B., Jr. [ME-1]
+400	HANRAHAN
+1253	Neumann, Mark W. [WI-1]
+788	McCain, John [AZ]
+1285	Pascrell, Bill, Jr. [NJ-8]
+1067	Baesler, Scotty [KY-6]
+1304	Rothman, Steve R. [NJ-9]
+375	BURLESON
+1583	BARTLETT
+494	BLANCHARD
+893	Meyers, Jan [KS-3]
+1650	Wilson, Pete [CA]
+1657	Bond, Christopher S. [MO]
+1024	Andrews, Thomas H. [ME-1]
+112	BURKE (CALIF.)
+1014	Collins, Barbara-Rose [MI-15]
+544	STOCKMAN
+1310	Turner, Jim [TX-2]
+106	KYROS
+1413	Flake, Jeff [AZ-6]
+26	WHITEHURST
+1153	Inglis, Bob [SC-4]
+387	MOORHEAD, W.
+350	JONES, E.
+4	BELL
+823	Wise, Robert E., Jr. [WV-3]
+1281	Kucinich, Dennis J. [OH-10]
+440	BRODHEAD
+585	TRIBLE
+622	SOLOMON
+834	Bosco, Douglas H. [CA-1]
+1679	Hutchison, Kay Bailey [TX]
+54	RINALDO
+101	EDWARDS, J.
+897	WALDON
+1356	Tancredo, Thomas G. [CO-6]
+337	PASSMAN
+60	MOSS
+34	RARICK
+481	JENRETTE
+1277	Blagojevich, Rod R. [IL-5]
+1051	Pastor, Ed [AZ-4]
+1320	Johnson, Jay W. [WI-8]
+467	D'AMOURS
+762	Roberts, Pat [KS]
+1431	Rehberg, Dennis R. [MT]
+238	EVANS (COLO.)
+674	KRAMER
+627	Whittaker, Bob [KS-5]
+1585	BELLMON
+936	Flake, Floyd H. [NY-6]
+295	SNYDER
+1092	Thompson, Bennie G. [MS-2]
+1226	Jackson, Jesse L., Jr. [IL-2]
+912	Rhodes, John J., III [AZ-1]
+242	DUPONT
+1204	Thornberry, Mac [TX-13]
+810	Levine, Mel [CA-27]
+1577	Burdick, Joycelyn [ND]
+189	SISK
+775	Bilirakis, Michael [FL-9]
+16	FLOWERS
+398	SCHNEEBELI
+575	BENJAMIN
+913	Cardin, Benjamin L. [MD-3]
+875	MONSON
+805	Chandler, Rod D. [WA-8]
+208	JOHNSON (PA.)
+896	Perkins, Carl C. [KY-7]
+1019	Taylor, Charles H. [NC-11]
+1254	Bass, Charles F. [NH-2]
+1676	Murray, Patty [WA]
+695	Dyson, Roy [MD-1]
+380	Miller, Clarence E. [OH-10]
+1554	STENNIS
+72	Dickinson, William L. [AL-2]
+1041	Moran, James P. [VA-8]
+1649	EVANS
+1168	Weldon, Dave [FL-15]
+1697	Fitzgerald, Peter [IL]
+653	DECKARD
+988	Poshard, Glenn [IL-22]
+1339	John, Christopher [LA-7]
+1384	Osborne, Tom [NE-3]
+362	CHAMBERLAIN
+68	Dellums, Ronald V. [CA-9]
+643	PEYSER
+1666	Robb, Charles S. [VA]
+1521	JAVITS
+275	MIZELL
+46	BUCHANAN
+1595	CLARK
+382	THORNTON
+724	MOLINARI
+938	Hochbrueckner, George J. [NY-1]
+1380	Napolitano, Grace F. [CA-38]
+547	Rahall, Nick J., II [WV-4]
+1111	Strickland, Ted [OH-6]
+1439	Ballance, Frank W., Jr. [NC-1]
+199	ASHLEY
+323	BOLAND
+995	Tanner, John S. [TN-8]
+247	HECHLER
+1005	Sanders, Bernard [VT]
+631	Ritter, Don [PA-15]
+669	Tauke, Thomas Joseph [IA-2]
+18	Archer, Bill [TX-7]
+403	Rostenkowski, Dan [IL-8]
+406	Rose, Charlie [NC-7]
+1121	Horn, Stephen [CA-38]
+652	Williams, Pat [MT]
+683	HANCE
+852	Lehman, Richard H. [CA-19]
+232	DANIEL, D.
+355	Crane, Philip M. [IL-12]
+994	Hoagland, Peter [NE-2]
+1243	Cummings, Elijah E. [MD-7]
+749	Hansen, James V. [UT-1]
+187	YOUNG (GA.)
+83	DRINAN
+1149	Barlow, Tom [KY-1]
+1198	Ney, Robert W. [OH-18]
+1480	Turner, Michael R. [OH-3]
+539	LEFANTE
+814	McCandless, Alfred A. (Al) [CA-44]
+487	HAGEDORN
+1371	Vitter, David [LA-1]
+541	LEDERER
+45	LEGGETT
+753	Skeen, Joe [NM-2]
+954	Shays, Christopher [CT-4]
+1402	Wilson, Joe [SC-2]
+1482	Cardoza, Dennis A. [CA-18]
+662	Clinger, William F., Jr. [PA-23]
+1192	Tiahrt, Todd [KS-4]
+1334	Brady, Robert [PA-1]
+1414	Issa, Darrell E. [CA-49]
+1295	Hill, Rick [MT]
+1342	Isakson, Johnny [GA-6]
+1039	Dooley, Calvin M. [CA-20]
+808	Kaptur, Marcy [OH-9]
+1529	BYRD, R.
+1078	Furse, Elizabeth [OR-1]
+442	EVANS, D.
+595	Fowler, Wyche, Jr. [GA]
+743	WEBER, E.
+976	Robinson, Tommy F. [AR-2]
+546	Pease, Donald J. [OH-13]
+1023	LaRocco, Larry [ID-1]
+972	Douglas, Chuck [NH-2]
+1219	Jackson-Lee, Sheila [TX-18]
+1075	Brown, Sherrod [OH-13]
+945	Gallegly, Elton [CA-24]
+376	CEDERBERG
+754	BAILEY, W.
+684	Shelby, Richard C. [AL]
+61	ANDREWS
+1048	Hobson, David L. [OH-7]
+500	RISENHOOVER
+383	FINDLEY
+710	WORTLEY
+330	TEAGUE
+1489	Chandler, Ben [KY-6]
+431	PATTISON
+409	Gibbons, Sam [FL-11]
+862	BOULTER
+36	NIX
+870	Kanjorski, Paul E. [PA-11]
+1160	Johnson, Don [GA-10]
+680	BONER
+1711	Dole, Elizabeth H. [NC]
+304	Udall, Morris K. [AZ-2]
+476	Early, Joseph D. [MA-3]
+629	Frost, Martin [TX-24]
+361	HUDNUT
+772	Ackerman, Gary L. [NY-7]
+415	ALBERT
+1030	Gilchrest, Wayne T. [MD-1]
+1305	Hooley, Darlene [OR-5]
+1615	Wallop, Malcolm [WY]
+706	SHAMANSKY
+423	MCSPADDEN
+1104	Stupak, Bart [MI-1]
+271	Montgomery, G. V. (Sonny) [MS-3]
+1106	Danner, Pat [MO-6]
+714	ATKINSON
+1478	Miller, Brad [NC-13]
+23	WYATT
+1152	Mann, David [OH-1]
+315	YOUNG (ILL.)
+1409	Matheson, Jim [UT-2]
+841	Torres, Estaban Edward [CA-34]
+1215	Brownback, Sam [KS]
+1279	Delahunt, William D. [MA-10]
+288	PETTIS
+1050	Blackwell, Lucien E. [PA-2]
+712	SILJANDER
+300	STEELMAN
+1000	Taylor, Gene [MS-5]
+289	PRICE (TEX.)
+1289	Smith, Adam [WA-9]
+435	Waxman, Henry A. [CA-30]
+1570	HUGHES
+57	CLARK
+1395	Crenshaw, Ander [FL-4]
+1169	Foley, Mark [FL-16]
+1232	Largent, Steve [OK-1]
+1617	Moynihan, Daniel Patrick [NY]
+799	Vucanovich, Barbara F. [NV-2]
+704	ROEMER
+690	HUTCHINSON
+445	Mineta, Norman Y. [CA-15]
+779	Burton, Dan [IN-6]
+252	HOLT
+921	Espy, Mike [MS-2]
+835	FRANKLIN
+1376	Udall, Mark [CO-2]
+96	ANDERSON (CALIF.)
+727	Savage, Gus [IL-2]
+1556	TALMADGE
+1718	Barkley, Dean M. [MN]
+803	BRITT
+49	BIAGGI
+1533	ALLEN
+819	Rowland, J. Roy [GA-8]
+552	Beilenson, Anthony C. [CA-24]
+489	BLOUIN
+1544	HELMS
+898	Abercrombie, Neil [HI-1]
+534	CAVANAUGH
+559	Pursell, Carl D. [MI-2]
+716	COYNE, J.
+227	Boggs, Corinne C. (Lindy) [LA-2]
+1466	Brown-Waite, Ginny [FL-5]
+1587	DOMENICI
+1155	McHugh, John M. [NY-24]
+515	Goodling, William F. [PA-19]
+195	BLATNIK
+157	STEELE
+1549	LONG, R.
+264	LITTON
+984	Engel, Eliot L. [NY-19]
+221	BURKE (MASS.)
+153	ZION
+697	Gejdenson, Sam [CT-2]
+579	Gore, Albert, Jr. [TN]
+590	Huckaby, Thomas J. (Jerry) [LA-5]
+1370	Lucas, Ken [KY-4]
+1085	Kreidler, Mike [WA-9]
+1347	Berkley, Shelley [NV-1]
+390	Foley, Thomas S. [WA-5]
+619	LUNGREN
+484	MOTTL
+169	TOWELL
+1154	Bonilla, Henry [TX-23]
+1089	Royce, Edward R. [CA-40]
+1393	Solis, Hilda L. [CA-32]
+129	HUNGATE
+88	ERLENBORN
+429	RIEGLE
+1458	Cole, Tom [OK-4]
+937	Harris, Claude [AL-7]
+149	GUBSER
+439	PATTERSON
+783	Gekas, George W. [PA-17]
+1362	Ryan, Paul [WI-1]
+529	Derrick, Butler C. [SC-3]
+63	HORTON
+472	Russo, Martin A. [IL-3]
+630	Gray, William H., III [PA-2]
+1004	Washington, Craig A. [TX-18]
+1456	Bradley, Jeb [NH-1]
+557	Walgren, Doug [PA-18]
+501	TAYLOR
+245	GROSS
+574	CORNWELL
+210	RAILSBACK
+1119	Hutchinson, Tim [AR]
+1591	COTTON
+1635	STEWART
+495	MARTIN, J.
+734	Dymally, Mervyn M. [CA-31]
+1468	King, Steve [IA-5]
+566	Panetta, Leon [CA-17]
+1251	Waldholtz, Enid Greene [UT-2]
+1007	Franks, Gary A. [CT-5]
+962	Walsh, James T. [NY-27]
+150	FISHER
+209	HECKLER
+789	McCloskey, Frank [IN-8]
+888	Combest, Larry [TX-19]
+1257	Maloney, James H. [CT-5]
+1405	Larsen, Rick [WA-2]
+1596	HASKELL
+175	MINSHALL
+1680	Kempthorne, Dirk [ID]
+1278	Carson, Julia [IN-10]
+200	DANIELS, DOMINICK V.
+308	SYMINGTON
+1292	Allen, Thomas H. [ME-1]
+778	Boxer, Barbara [CA]
+1317	Snyder, Vic [AR-2]
+543	Quayle, Dan [IN]
+1411	Watson, Diane E. [CA-33]
+172	CONABLE
+314	Young, C. W. Bill [FL-10]
+1264	Cooksey, John [LA-5]
+987	Neal, Richard E. [MA-2]
+583	RUDD
+970	Rohrabacher, Dana [CA-46]
+37	WOLFF
+394	DONOHUE
+419	Traxler, Bob [MI-8]
+596	FARY
+1628	Boschwitz, Rudy [MN]
+436	WEAVER
+793	Richardson, Bill [NM-3]
+967	Smith, Larkin [MS-5]
+942	Pelosi, Nancy [CA-8]
+1574	BROCK
+450	FENWICK
+953	Price, David E. [NC-4]
+141	RONCALLO
+216	RUNNELS
+30	VEYSEY
+1	O'NEILL
+47	HELSTOSKI
+1511	BROOKE
+214	CHAPPELL
+944	Campbell, Ben Nighthorse [CO]
+91	RANGEL
+470	Kasten, Robert W., Jr. [WI]
+147	TREEN
+639	Coelho, Anthony Lee [CA-15]
+1123	Blute, Peter I. [MA-3]
+244	GRAY
+1108	Quinn, Jack [NY-30]
+1186	Lewis, Ron [KY-2]
+693	DAUB
+1173	Barr, Bob [GA-7]
+488	BEDELL
+829	Mrazek, Robert J. [NY-3]
+1504	BENTSEN
+1568	PERCY
+1224	Metcalf, Jack [WA-2]
+1499	Kennedy, Edward M. [MA]
+140	HICKS
+863	Smith, Bob [NH]
+785	Kasich, John R. [OH-12]
+1077	Fingerhut, Eric D. [OH-19]
+560	Applegate, Douglas [OH-18]
+688	MUSTO
+1673	Feingold, Russell D. [WI]
+950	Bilbray, James H. [NV-1]
+378	HILLIS
+51	Mazzoli, Romano L. [KY-3]
+1695	Campbell, Ben Nighthorse [CO]
+177	MOSHER
+759	Hiler, John Patrick [IN-3]
+123	FLOOD
+657	WILLIAMS, L.
+427	MAHON
+1256	Millender-McDonald, Juanita [CA-37]
+358	BRAY
+1435	Davis, Artur [AL-7]
+1525	MOSS
+1696	Chafee, Lincoln D. [RI]
+661	LEACH, C.
+1365	Baldwin, Tammy [WI-2]
+1497	RUTH
+740	WASHINGTON
+581	MARRIOTT
+713	Kennelly, Barbara B. [CT-1]
+1716	HODGES
+1026	DeLauro, Rosa L. [CT-3]
+532	ALLEN
+658	COURTER
+1350	Jones, Stephanie Tubbs [OH-11]
+1341	Miller, Gary G. [CA-42]
+756	EVANS, C.
+1132	Tejeda, Frank [TX-28]
+365	BROYHILL
+1539	ERVIN
+1561	HART (MICH.)
+771	Martinez, Matthew G. [CA-31]
+1541	GURNEY
+1443	Emanuel, Rahm [IL-5]
+825	Andrews, Michael [TX-25]
+907	DAVIS, J.
+509	Brooks, Jack B. [TX-9]
+78	PODELL
+986	Lowey, Nita M. [NY-20]
+1403	Schrock, Edward L. [VA-2]
+521	Jeffords, James M. [VT]
+1297	Etheridge, Bob [NC-2]
+407	SHIPLEY
+1464	Gingrey, Phil [GA-11]
+1181	Cooley, Wes [OR-2]
+616	LEE
+874	Saxton, Jim [NJ-13]
+1058	Castle, Michael N. [DE]
+1688	Sessions, Jeff [AL]
+820	Staggers, Harley O., Jr. [WV-2]
+817	Owens, Major R. [NY-12]
+182	DELLENBACK
+1083	Scott, Robert C. [VA-3]
+1307	Tierney, John F. [MA-6]
+1093	Clayton, Eva M. [NC-1]
+1363	Schakowsky, Janice D. [IL-9]
+138	O'HARA
+964	Goss, Porter J. [FL-14]
+703	McGrath, Raymond J. [NY-5]
+518	Hefner, W. G. (Bill) [NC-8]
+292	Smith, Neal Edward [IA-4]
+866	Stallings, Richard H. [ID-2]
+1283	Reyes, Silvestre [TX-16]
+235	EVINS
+673	JEFFRIES
+692	BENEDICT
+971	Cox, Christopher [CA-48]
+1112	Klink, Ron [PA-4]
+1229	Ehrlich, Robert L., Jr. [MD-2]
+1647	Murkowski, Frank H. [AK]
+40	ADDABBO
+1359	Terry, Lee [NE-2]
+1065	Reynolds, Mel [IL-2]
+838	VANDER JAGT
+599	MATTOX
+1518	DOMINICK
+417	Lagomarsino, Robert J. [CA-19]
+1156	Baker, Bill [CA-10]
+891	Kolbe, Jim [AZ-8]
+1332	Riley, Bob [AL-3]
+1200	Sanford, Marshall (Mark) [SC-1]
+1212	Kennedy, Patrick J. [RI-1]
+1452	Franks, Trent [AZ-2]
+1546	Inouye, Daniel K. [HI]
+842	Bryant, John W. [TX-5]
+1434	Miller, Candice S. [MI-10]
+884	ROBINSON, T.
+1016	Cunningham, Randy (Duke) [CA-51]
+1147	Menendez, Robert [NJ-13]
+1450	Ryan, Tim [OH-17]
+12	HANNA
+1344	Phelps, David D. [IL-19]
+1601	Leahy, Patrick J. [VT]
+343	BIESTER
+410	JOHNSON, J.
+528	Gradison, Willis D., Jr. [OH-2]
+626	ATKINSON
+246	HALEY
+364	Parris, Stanford E. (Stan) [VA-8]
+764	Smith, Denny [OR-5]
+770	PATMAN
+1180	Heineman, Frederick K. (Fred) [NC-4]
+1231	Cremeans, Frank A. [OH-6]
+1246	Jones, Walter B., Jr. [NC-3]
+889	DeLay, Tom [TX-22]
+623	Wolpe, Howard E. [MI-3]
+837	Smith, Robert [OR-2]
+456	SCHEUER
+1388	Tiberi, Patrick J. [OH-12]
+979	Smith, Peter [VT]
+678	Thomas, William M. [CA-22]
+1203	Stockman, Steve [TX-9]
+262	JONES, J.
+92	Stark, Fortney Pete [CA-13]
+338	STUBBLEFIELD
+1436	Scott, David [GA-13]
+1592	YOUNG, M.
+1205	Davis, Tom [VA-11]
+1068	Wynn, Albert Russell [MD-4]
+1633	Mitchell, George J. [ME]
+1651	Lautenberg, Frank R. [NJ]
+767	Coats, Daniel [IN]
+1507	GRAVEL
+124	MOLLOHAN
+267	MORGAN
+791	Nielson, Howard C. [UT-3]
+360	HUTCHINSON
+85	HOLTZMAN
+940	KONNYU
+1462	Musgrave, Marilyn N. [CO-4]
+25	HASTINGS
+1377	Larson, John B. [CT-1]
+798	Torricelli, Robert G. [NJ]
+181	WAGGONNER
+1028	Camp, Dave [MI-10]
+894	SWEENEY
+1404	Forbes, J. Randy [VA-4]
+768	Morrison, Sid [WA-4]
+1217	English, Phil [PA-21]
+1665	Lieberman, Joseph I. [CT]
+1071	Kline, Herbert C. [NJ-8]
+1185	Cubin, Barbara [WY]
+356	CONLAN
+1422	Culberson, John Abney [TX-7]
+1483	Majette, Denise L. [GA-4]
+458	NOLAN
+1675	Mathews, Harlan [TN]
+1163	Crapo, Michael D. [ID]
+1476	Janklow, William J. [SD]
+194	TIERNAN
+1646	BRADY
+1002	Andrews, Robert E. [NJ-1]
+52	DAVIS, M.
+233	CARNEY
+1709	Coleman, Norm [MN]
+234	DORN
+367	Michel, Robert H. [IL-18]
+758	HARTNETT
+1669	Wofford, Harris [PA]
+278	MILFORD
+1222	Latham, Tom [IA-5]
+959	McDermott, Jim [WA-7]
+336	FLYNT
+1142	Kim, Jay [CA-41]
+1291	Schaffer, Bob [CO-4]
+1605	DURKIN
+533	HALL, S.
+64	Matsunaga, Spark M. [HI]
+568	Leach, James A. [IA-2]
+1620	Chafee, John H. [RI]
+1397	Graves, Sam [MO-6]
+408	GIAIMO
+257	LONG, C.
+220	BROOMFIELD
+444	Harkin, Tom [IA]
+651	Swift, Al [WA-2]
+943	Patterson, Elizabeth [SC-4]
+993	Gillmor, Paul E. [OH-5]
+524	HAYES
+854	Hayes, Charles A. [IL-1]
+588	GUDGER
+932	GRANT
+67	Obey, David R. [WI-7]
+1663	Burns, Conrad R. [MT]
+864	Henry, Paul B. [MI-5]
+1578	CASE
+229	DAVIS (GA.)
+1351	Wu, David [OR-1]
+190	THOMPSON
+1428	Sullivan, John [OK-1]
+7	Brown, George E., Jr. [CA-42]
+1424	Akin, W. Todd [MO-2]
+228	DELANEY
+1165	Lucas, Frank D. [OK-6]
+179	DOWNING
+395	POWELL
+537	YOUNG, R.
+325	McDade, Joseph M. [PA-10]
+437	ZEFERETTI
+1500	MUSKIE
+536	STEERS
+615	Leath, Marvin [TX-11]
+878	ECKERT
+1658	Conrad, Kent [ND]
+340	TALCOTT
+402	KLUCZYNSKI
+526	SANTINI
+989	Stearns, Cliff [FL-6]
+1319	Weygand, Robert A. [RI-2]
+1685	Frist, Bill [TN]
+399	BOLLING
+519	HIGHTOWER
+1202	Wamp, Zach [TN-3]
+1263	Wexler, Robert [FL-19]
+807	Erdreich, Ben [AL-6]
+174	Dingell, John D. [MI-16]
+1364	Weiner, Anthony D. [NY-9]
+319	MADIGAN
+371	MCEWEN
+1221	McIntosh, David M. [IN-2]
+1138	Talent, Jim [MO]
+1336	Berry, Marion [AR-1]
+24	Wylie, Chalmers P. [OH-15]
+156	STANTON, J. WILLIAM
+116	STEIGER
+1036	Nussle, Jim [IA-2]
+1438	Ruppersberger, C. A. Dutch [MD-2]
+1311	Goode, Virgil H., Jr. [VA-5]
+1516	BENNETT
+1046	Allard, A. Wayne [CO]
+1453	Marshall, Jim [GA-3]
+1176	Weller, Jerry [IL-11]
+1391	Brown, Henry E., Jr. [SC-1]
+1260	McGovern, James P. [MA-3]
+349	GRIFFITHS
+496	Hughes, William J. [NJ-2]
+983	Laughlin, Greg [TX-14]
+1196	Funderburk, David [NC-2]
+1630	Exon, J. James [NE]
+56	MEEDS
+839	HARRISON
+1600	MORGAN
+633	Anthony, Beryl, Jr. [AR-4]
+1113	Green, Gene [TX-29]
+520	English, Glenn [OK-6]
+895	SWINDALL
+1249	Hilleary, Van [TN-4]
+11	ANDERSON, J.
+491	HARRIS
+158	BURGENER
+708	Smith, Christopher H. [NJ-4]
+160	HINSHAW
+464	KELLY
+582	WHITLEY
+1557	THURMOND
+478	Oberstar, James L. [MN-8]
+1103	Deal, Nathan [GA-9]
+384	HAYS
+992	Sangmeister, George E. [IL-11]
+1534	BEALL
+1495	JARMAN
+1566	PELL
+1047	Ewing, Thomas W. [IL-15]
+1429	Shuster, Bill [PA-9]
+490	EDGAR
+946	Skaggs, David E. [CO-2]
+335	CRONIN
+479	MOORE
+1396	Kirk, Mark Steven [IL-10]
+828	MCNULTY
+1280	McCarthy, Carolyn [NY-4]
+114	REID
+165	ZABLOCKI
+133	ROY
+1678	Faircloth, Lauch [NC]
+328	SANDMAN
+748	SMITH, J.
+1122	Kingston, Jack [GA-1]
+84	Sarbanes, Paul S. [MD]
+738	ROUKEMA
+977	Campbell, Tom [CA-15]
+752	McEwen, Bob [OH-6]
+645	Dannemeyer, William E. [CA-39]
+93	STANTON, J. WILLIAM
+425	GOODLING
+1303	Davis, Jim [FL-11]
+564	CAPUTO
+1208	Flanagan, Michael Patrick [IL-5]
+1569	Dole, Robert J. [KS]
+1373	Hoeffel, Joseph M. [PA-13]
+608	TONRY
+77	Edwards, Don [CA-16]
+1175	Chenoweth-Hage, Helen [ID-1]
+311	WALSH
+1061	Bishop, Sanford D., Jr. [GA-2]
+605	GREEN
+1302	Boyd, Allen [FL-2]
+441	Dodd, Christopher J. [CT]
+132	MELCHER
+1631	Heflin, Howell [AL]
+1681	Ashcroft, John [MO]
+516	HARSHA
+1389	Carson, Brad [OK-2]
+231	COLLINS, J.
+550	WEISS
+725	CARMAN
+1550	MCCLELLAN
+1590	TAFT
+1609	HUMPHREY (MURIEL)
+302	WAMPLER
+1642	EAST
+1178	Rivers, Lynn N. [MI-13]
+1552	PASTORE
+225	ABDNOR
+1087	Barrett, Thomas M. [WI-5]
+76	BURTON, P.
+224	BROWN (MICH.)
+1360	Hayes, Robin [NC-8]
+1593	MATHIAS
+213	O'BRIEN
+204	GUNTER
+122	Yatron, Gus [PA-6]
+769	DOWDY
+414	ROGERS
+287	RONCALIO
+1509	MAGNUSON
+939	Houghton, Amo [NY-34]
+102	Hawkins, Augustus F. [CA-29]
+180	SIKES
+1130	Levy, David A. [NY-4]
+1523	MCINTYRE
+413	VANDER VEEN
+601	GAMMAGE
+561	Edwards, Mickey [OK-5]
+806	Clarke, James McC. [NC-11]
+731	DENARDIS
+1258	Davis, Danny K. [IL-7]
+877	Ireland, Andrew P. [FL-10]
+1353	Baird, Brian [WA-3]
+331	HARVEY
+1433	McCotter, Thaddeus G. [MI-11]
+1700	Edwards, John [NC]
+948	Kennedy, Joseph P., II [MA-8]
+985	Pallone, Frank, Jr. [NJ-6]
+1328	Capps, Walter [CA-22]
+638	Shumway, Norman D. [CA-14]
+679	Petri, Thomas E. [WI-6]
+1237	Gutknecht, Gil [MN-1]
+1234	Doyle, Michael F. [PA-18]
+462	MIKVA
+1357	Simpson, Michael K. [ID-2]
+239	GETTYS
+1626	Simpson, Alan K. [WY]
+969	Ros-Lehtinen, Ileana [FL-18]
+1133	Dunn, Jennifer [WA-8]
+1184	Nethercutt, George R., Jr. [WA-5]
+296	SATTERFIELD
+1470	Case, Ed [HI-2]
+1299	Jenkins, William L. [TN-1]
+1455	Porter, Jon C. [NV-3]
+139	SULLIVAN
+1621	HATFIELD (MONT.)
+1210	Baldacci, John Elias [ME-2]
+717	Craig, Larry E. [ID]
+1145	Huffington, Michael [CA-22]
+1686	Shelby, Richard C. [AL]
+705	Schumer, Charles E. [NY]
+212	MCCOLLISTER
+310	Symms, Steven D. [ID]
+871	Miller, John R. [WA-1]
+1272	Cook, Merrill [UT-2]
+1408	Honda, Michael M. [CA-15]
+1415	Rogers, Mike [MI-8]
+760	JOHNSTON
+1531	HARTKE
+265	MADDEN
+282	ROUSH
+1290	Aderholt, Robert B. [AL-4]
+853	Ray, Richard B. [GA-3]
+1214	Hayworth, J. D. [AZ-6]
+1573	Metzenbaum, Howard M. [OH]
+17	FORSYTHE
+250	Hammerschmidt, John P. [AR-3]
+801	Stump, Bob [AZ-3]
+466	Lloyd, Marilyn [TN-3]
+1575	McClure, James A. [ID]
+127	GREEN
+475	AuCoin, Les [OR-1]
+934	Buechner, Jack [MO-2]
+1013	Zeliff, William H., Jr. [NH-1]
+1193	Whitfield, Ed [KY-1]
+851	Spratt, John M., Jr. [SC-5]
+637	Sensenbrenner, F. James, Jr. [WI-9]
+1063	McKinney, Cynthia A. [GA-11]
+1172	Bono, Mary [CA-44]
+744	Hall, Ralph M. [TX-4]
+1022	Kopetski, Mike [OR-5]
+226	BAFALIS
+1419	Kennedy, Mark R. [MN-6]
+1421	Keller, Ric [FL-8]
+43	PIKE
+203	Vander Jagt, Guy [MI-9]
+1033	Orton, Bill [UT-3]
+1137	Bartlett, Roscoe G. [MD-6]
+104	WALDIE
+1268	Northup, Anne [KY-3]
+960	Unsoeld, Jolene [WA-3]
+999	Browder, Glen [AL-3]
+468	MAGUIRE
+320	SARASIN
+604	Dicks, Norman D. [WA-6]
+1236	Doggett, Lloyd [TX-10]
+919	Bunning, Jim [KY]
+465	Krueger, Robert C. [TX]
+998	Geren, Pete [TX-12]
+857	Kleczka, Gerald D. [WI-4]
+48	BRASCO
+702	McCurdy, Dave [OK-4]
+1045	Roemer, Tim [IN-3]
+1318	Hulshof, Kenny C. [MO-9]
+711	Wyden, Ron [OR]
+737	HENDON
+1086	Barca, Peter [WI-1]
+1660	KARNES
+291	SLACK
+422	PREYER
+1225	McCarthy, Karen [MO-5]
+196	Ford, William D. [MI-15]
+1394	Davis, Susan A. [CA-53]
+576	MYERS, M.
+968	Paxon, Bill [NY-31]
+281	ROBISON
+1667	Kerrey, J. Robert [NE]
+578	HEFTEL
+1632	Kassebaum, Nancy Landon [KS]
+277	MEZVINSKY
+255	MCFALL
+1519	FANNIN
+1275	Sanchez, Loretta [CA-47]
+485	EMERY
+1282	Hinojosa, Ruben [TX-15]
+1491	ICPSR-20308
+405	MATHIAS
+1321	Wilson, Heather [NM-1]
+746	MARTIN, D.
+1641	DENTON
+301	TAYLOR (N. C.)
+164	REUSS
+1315	Redmond, Bill [NM-3]
+1190	Bilbray, Brian P. [CA-49]
+830	Sikorski, Gerry E. [MN-6]
+1432	Boozman, John [AR-3]
+2	HOSMER
+1269	Gibbons, Jim [NV-2]
+1416	Cantor, Eric [VA-7]
+1006	Riggs, Frank [CA-1]
+925	Holloway, Clyde [LA-8]
+1674	Moseley-Braun, Carol [IL]
+136	DULSKI
+151	SHRIVER
+1562	MONDALE
+1057	McInnis, Scott [CO-3]
+342	BROYHILL (VA.)
+1701	Miller, Zell [GA]
+1220	Hastings, Doc [WA-4]
+900	Callahan, Sonny [AL-1]
+1284	Blumenauer, Earl [OR-3]
+611	CRANE, D.
+1197	Myrick, Sue [NC-9]
+1313	Peterson, John E. [PA-5]
+741	Hoyer, Steny H. [MD-5]
+283	ROBERTS
+159	FROEHLICH
+448	DUNCAN, R.
+926	Johnson, Tim [SD]
+459	BALDUS
+1011	Molinari, Susan [NY-14]
+696	Foglietta, Thomas M. [PA-1]
+538	Bonior, David E. [MI-12]
+121	MCCLORY
+109	Stokes, Louis [OH-21]
+833	BURTON, S.
+298	STEIGER (ARIZ.)
+1001	Bacchus, Jim [FL-15]
+1623	Humphrey, Gordon J. [NH]
+457	Downey, Thomas J. [NY-2]
+722	Schneider, Claudine [RI-2]
+1171	Lofgren, Zoe [CA-16]
+836	Ridge, Thomas J. [PA-21]
+1706	ICPSR-40100
+168	LATTA
+1238	Frelinghuysen, Rodney P. [NJ-11]
+644	ALBOSTA
+1537	CHILES
+906	Upton, Fred [MI-6]
+1477	Bishop, Timothy H. [NY-1]
+1493	YOUNG (TEX.)
+784	Johnson, Nancy L. [CT-6]
+1162	Smith, Nick [MI-7]
+636	Cheney, Dick [WY]
+211	DENNIS
+1399	Israel, Steve [NY-2]
+1524	METCALF
+359	Hamilton, Lee H. [IN-9]
+1567	STEVENSON
+777	Borski, Robert A. [PA-3]
+1515	BIBLE
+332	MCKINNEY
+1582	NELSON, G.
+1298	McIntyre, Mike [NC-7]
+1622	Durenberger, Dave [MN]
+1687	Frahm, Sheila [KS]
+1528	MONTOYA
+299	RYAN
+363	BROTZMAN
+1207	Luther, Bill [MN-6]
+198	Lehman, William [FL-17]
+1267	Ryun, Jim [KS-2]
+272	Myers, John T. [IN-7]
+1206	Smith, Linda [WA-3]
+1037	Nichols, Dick [KS-5]
+1586	CURTIS
+482	LLOYD, J.
+469	AMBRO
+887	Coble, Howard [NC-6]
+571	Gephardt, Richard A. [MO-3]
+1088	Tucker, Walter R., III [CA-37]
+1266	Rogan, James E. [CA-27]
+1627	Boren, David L. [OK]
+955	Clement, Bob [TN-5]
+1653	HECHT
+1707	Nelson, E. Benjamin [NE]
+1335	Boswell, Leonard L. [IA-3]
+1010	Jefferson, William J. [LA-2]
+374	CAMP
+1345	Capuano, Michael E. [MA-8]
+1379	Udall, Tom [NM-3]
+505	BONKER
+443	HANNAFORD
+600	Flippo, Ronnie G. [AL-5]
+827	Durbin, Richard J. [IL]
+1187	Shadegg, John B. [AZ-4]
+1361	DeMint, Jim [SC-4]
+689	Tauzin, W. J. (Billy) [LA-3]
+1526	NUNN
+920	DeFazio, Peter A. [OR-4]
+1308	Strickland, Ted [OH-6]
+449	Pressler, Larry [SD]
+480	Wirth, Timothy [CO]
+879	Gallo, Dean A. [NJ-11]
+369	Cochran, Thad [MS]
+850	Slattery, Jim [KS-2]
+1020	Peterson, Douglas (Pete) [FL-2]
+1021	Horn, Joan Kelly [MO-2]
+1314	Pitts, Joseph R. [PA-16]
+1486	Hensarling, Jeb [TX-5]
+1501	MANSFIELD
+1597	Bumpers, Dale [AR]
+990	Duncan, John J., Jr. [TN-2]
+1069	Meehan, Martin T. [MA-5]
+1306	Sherman, Brad [CA-27]
+1235	Mascara, Frank [PA-20]
+1095	Schenk, Lynn [CA-49]
+698	Hertel, Dennis M. [MI-14]
+1070	Hoekstra, Peter [MI-2]
+486	MEYNER
+1040	Olver, John W. [MA-1]
+530	LUNDINE
+1407	Johnson, Timothy V. [IL-15]
+170	ZWACH
+1066	Gutierrez, Luis V. [IL-4]
+1270	Brady, Kevin [TX-8]
+42	CORMAN
+193	REES
+59	Kastenmeier, Robert W. [WI-2]
+1472	Bishop, Rob [UT-1]
+675	Leland, Mickey [TX-18]
+1300	Sessions, Pete [TX-32]
+796	Smith, Lawrence [FL-16]
+527	JARMAN
+1183	Bentsen, Ken [TX-25]
+1352	Inslee, Jay [WA-1]
+1553	RANDOLPH
+811	Lipinski, William O. [IL-5]
+726	Coyne, William J. [PA-14]
+1139	Goodlatte, Bob [VA-6]
+865	Schuette, Bill [MI-10]
+1692	Enzi, Michael B. [WY]
+388	Wright, James C., Jr. [TX-12]
+69	RIEGLE
+991	Condit, Gary A. [CA-18]
+219	BARRETT
+223	BRINKLEY
+802	Gramm, Phil [TX]
+351	VIGORITO
+1294	Emerson, Jo Ann [MO-8]
+572	Volkmer, Harold L. [MO-9]
+1398	Grucci, Felix J., Jr. [NY-1]
+434	TSONGAS
+1378	Moore, Dennis [KS-3]
+259	Jones, Walter B. [NC-1]
+997	Long, Jill L. [IN-4]
+1099	Calvert, Ken [CA-44]
+1244	LaHood, Ray [IL-18]
+558	ERTEL
+1383	Walden, Greg [OR-2]
+460	KINDNESS
+263	JORDAN
+357	BAKER
+1406	Goode, Virgil H., Jr. [VA-5]
+1096	Meek, Carrie P. [FL-17]
+531	PAUL
+665	Byron, Beverly B. [MD-6]
+915	Morella, Constance A. [MD-8]
+206	QUIE
+927	Lancaster, H. Martin [NC-3]
+32	HUBER
+316	Young, Don [AK]
+385	ESHLEMAN
+1340	Parker, Mike [MS-4]
+809	Kolter, Joseph P. [PA-4]
+670	BETHUNE
+923	Hayes, James A. [LA-7]
+432	Simon, Paul [IL]
+381	WYDLER
+1659	Graham, Bob [FL]
+719	ECKART
+1009	Serrano, Jose E. [NY-18]
+1427	Capito, Shelley Moore [WV-2]
+781	Evans, Lane [IL-17]
+813	MACKAY
+3	HARRINGTON
+1125	Barcia, James A. [MI-5]
+1259	Shimkus, John [IL-20]
+1287	Snowbarger, Vince [KS-3]
+804	Carper, Thomas R. [DE]
+910	Sawyer, Tom [OH-14]
+404	MCKAY
+1081	Clyburn, James E. [SC-6]
+691	Frank, Barney [MA-4]
+1474	Harris, Katherine [FL-13]
+928	Pickett, Owen B. [VA-2]
+812	Mack, Connie [FL]
+1025	Santorum, Rick [PA]
+632	STACK
+1296	Pappas, Michael [NJ-12]
+1012	Doolittle, John T. [CA-14]
+618	LOWRY
+1140	Everett, Terry [AL-2]
+1390	Platts, Todd Russell [PA-19]
+1366	Green, Mark [WI-8]
+341	LANDGREBE
+186	PRITCHARD
+321	Bennett, Charles E. [FL-3]
+420	Shuster, Bud [PA-9]
+1110	Pomeroy, Earl [ND]
+6	KEMP
+1035	Cox, John W., Jr. [IL-16]
+1042	Johnson, Sam [TX-3]
+856	Darden, George (Buddy) [GA-7]
+1717	ALLEN (MARYON)
+1535	Biden Jr., Joseph R. [DE]
+1038	Cramer, Robert E. (Bud), Jr. [AL-5]
+1241	Frisa, Dan [NY-4]
+322	COLLIER
+218	WIGGINS
+1473	Sanchez, Linda T. [CA-39]

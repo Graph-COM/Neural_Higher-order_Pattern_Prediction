@@ -1,0 +1,8 @@
+>>> print("close tri", len(cls_tri[0]))
+close tri 7449
+>>> print("open tri", len(opn_tri[0]))
+open tri 23930
+>>> print("wedge", len(wedge[0]))
+wedge 3993530
+>>> print("nega", len(nega[0]))
+nega 6015319509

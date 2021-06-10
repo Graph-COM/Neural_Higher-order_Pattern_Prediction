@@ -1,0 +1,19 @@
+1000000000000
+2724028.09057 0.0
+2724028.09057 0.0
+3022 3021 3021
+close tri 73202
+open tri 156468
+wedge 9434139
+nega 168446469
+Finish build HIT
+inter type 0
+num_class  1
+model dim, posdim 624 108
+use DE
+ts start   1089611.2362280001 ts train   2043021.0679274998 ts val   2247323.17472025 ts end   2451625.281513
+finish permutation
+upper limit for training 30000
+upper limit for val 6000
+upper limit for testing 6000
+finish dataset
