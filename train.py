@@ -16,7 +16,7 @@ import os
 
 def train_val(dataset, model, mode, bs, epochs, criterion, optimizer, early_stopper, ngh_finders, logger, interpretation=False, time_prediction=False):
     partial_ngh_finder, full_ngh_finder = ngh_finders
-    device = model.n_feat_th.data.device
+    device = model.device
     num_instance = dataset.get_size()
     num_batch = math.ceil(num_instance / bs)
     dataset.set_batch_size(bs)
@@ -46,7 +46,7 @@ def train_val(dataset, model, mode, bs, epochs, criterion, optimizer, early_stop
             
             model.train()
             optimizer.zero_grad()
-            if time_prediction:
+            if time_prediction: 
                 true_label_torch = torch.from_numpy(true_label).to(device)
                 _pred_score, _ = model.contrast(src_1_l_cut, src_2_l_cut, dst_l_cut, ts_l_cut, e_l_cut, endtime_pos=true_label_torch)   # the core training code
                 ave_log_t, pred_score, _ = _pred_score
@@ -118,16 +118,9 @@ def train_val(dataset, model, mode, bs, epochs, criterion, optimizer, early_stop
         if time_prediction:
             test_NLL, num, time_predicted_total, time_gt_total = eval_one_epoch('test for {} nodes'.format(mode), model, dataset, val_flag='test',interpretation=interpretation, time_prediction=time_prediction)
             time_predicted_total = np.exp(time_predicted_total)
-            time_gt_total = np.exp(time_gt_total)
-            # file_addr = './Histogram/'+dataset.DATA+'-'+str(dataset.time_prediction_type)+'/'
-            # if not os.path.exists(file_addr):
-            #     os.makedirs(file_addr)
-            
-            # with open(file_addr+'time_prediction_histogram'+str(epoch), 'wb') as f:
-            #     np.save(f, np.array([time_predicted_total, time_gt_total]))
-            # histogram.plot_hist_multi([time_predicted_total, time_gt_total], bins=50, figure_title='Time Prediction Histogram'+str(epoch), file_addr=file_addr, label=['Ours', 'Groundtruth'])
-            
+            time_gt_total = np.exp(time_gt_total)            
             logger.info('test NLL: {}'.format(test_NLL))
+            
         else:
             val_acc_t, val_ap_t, val_f1_t, val_auc_t, cm = eval_one_epoch('val for {} nodes'.format(mode), model, dataset, val_flag='test',interpretation=interpretation, time_prediction=time_prediction)
             logger.info('confusion matrix: ')

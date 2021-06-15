@@ -14,7 +14,7 @@ def eval_one_epoch(hint, model, dataset, val_flag='val', interpretation=False, t
     y_true, y_pred, y_score, y_one_hot_np = None, None, None, None
     dataset.reset()
     model.test = True
-    device = model.n_feat_th.data.device
+    device = model.device
     if interpretation:
         roc_auc_score = utils.roc_auc_score_single
     else:

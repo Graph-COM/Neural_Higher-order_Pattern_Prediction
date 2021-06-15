@@ -1,12 +1,12 @@
 import random
 import numpy as np
-# from numba import jit
+from numba import jit
 import logging
 numba_logger = logging.getLogger('numba')
 numba_logger.setLevel(logging.WARNING)
 
 
-# @jit(nopython=True)
+@jit(nopython=True)
 def seq_binary_sample(ngh_binomial_prob, num_neighbor):
     sampled_idx = []
     for j in range(num_neighbor):
@@ -16,7 +16,7 @@ def seq_binary_sample(ngh_binomial_prob, num_neighbor):
     return sampled_idx
 
 
-# @jit(nopython=True)
+@jit(nopython=True)
 def seq_binary_sample_one(ngh_binomial_prob):
     seg_len = 10
     a_l_seg = np.random.random((seg_len,))
@@ -35,7 +35,7 @@ def seq_binary_sample_one(ngh_binomial_prob):
     return 0  # very extreme case due to float rounding error
 
 
-# @jit(nopython=True)
+@jit(nopython=True)
 def bisect_left_adapt(a, x):
     """Return the index where to insert item x in list a, assuming a is sorted.
     The return value i is such that all e in a[:i] have e < x, and all e in

@@ -3,7 +3,7 @@
 The code is used to expand the hypergraph to the traditional graph.
 Changed the file_name here to process the simplex data.
 The original data can be downloaded from https://www.cs.cornell.edu/~arb/data/
-In our paper, we use tags-sx-math, tags-ask-ubuntu, congress-bills, DAWN, NDC-substances
+In our paper, we use tags-sx-math, tags-ask-ubuntu, congress-bills, DAWN, threads-ask-ubuntu
 We also provide tags-sx-math as a example.
 """
 import numpy as np
@@ -12,7 +12,7 @@ import sys
 
 # Load data and sanity check
 def get_args():
-    parser = argparse.ArgumentParser('PNAS Baseline')
+    parser = argparse.ArgumentParser('Preprocess')
 
     # select dataset and training mode
     parser.add_argument('-d', '--data', type=str, help='data sources to use, DAWN, tags-ask-ubuntu, tags-math-sx, NDC-substances, congress-bills',
@@ -31,7 +31,7 @@ DATA = args.data
 
 file_name = DATA
 
-fout = open('./processed/ml_' + file_name + '.csv', 'w')
+fout = open(f'./processed/ml_{file_name}.csv', 'w')
 fout.write(',u,i,ts,label,idx\n')
 file_addr = './data/' + file_name + '/' + file_name
 
@@ -43,6 +43,8 @@ nverts = []
 simplices = []
 times = []
 node2idx = {}
+
+# nverts = [int(i) for i in fin_nverts]
 for i in fin_nverts:
     nverts.append(int(i))
 count = 1
@@ -87,6 +89,8 @@ for idx_nverts, nverts_i in enumerate(nverts):
             count += 1
     
     simplices_i += nverts_i
+    # set(nodes)
+    # dict(set(nodes), range(1,len()+1))
 
 simplex_idx = -1
 for idx_y in y:
@@ -107,12 +111,12 @@ fin_times.close()
 fin_simplices.close()
 fin_nverts.close()
 
-# since we do not have  node feature and edge feature, we use all zeros matrix
-# the dimension is 172
-rand_feat = np.zeros((count, 172))
-np.save('./processed/ml_'+ file_name + '_node.npy', rand_feat)
-rand_feat = np.zeros((edge_idx, 172))
-np.save('./processed/ml_'+ file_name + '.npy', rand_feat)
+# # since we do not have  node feature and edge feature, we use all zeros matrix
+# # the dimension is 172
+# rand_feat = np.zeros((count, 172))
+# np.save('./processed/ml_'+ file_name + '_node.npy', rand_feat)
+# rand_feat = np.zeros((edge_idx, 172))
+# np.save('./processed/ml_'+ file_name + '.npy', rand_feat)
 
 print("total nodes ", len(node2idx))
 print("ave link stream intensity ", edge_idx * 1.0 / len(node2idx) / (max(times) - min(times)))
