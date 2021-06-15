@@ -63,7 +63,7 @@ python main.py -d tags-ask-ubuntu --time_prediction --time_prediction_type <time
     --time_prediction_type For interpretation, we have 3 tasks. 1: Closure; 2: Triangle; 3: Wedge;  Default 0 means no time_prediction
 ```
 
-The output will be in the ./time_prediction_output/<dataset>_<time_prediction_type>.txt.
+The output will be in the ./time_prediction_output/ <dataset>_<time_prediction_type>.txt.
 We report the NLL loss and MSE for training, validating, and testing sets.
 
 
@@ -78,7 +78,7 @@ python main.py -d tags-ask-ubuntu --interpretation --interpretation_type 1
 ```{txt}
     --interpretation_type: Interpretation type: For interpretation, we have 3 tasks. 1: Closure vs Triangle; 2: Closure + Triangle vs Wedge; 3: Wedge and Edge; Default 0 means no interpretation
 ```
-The output will be in the ./interpretation_output/<dataset>_<interpretation_type>.txt.
+The output will be in the ./interpretation_output/ <dataset>_<interpretation_type>.txt.
 We report all the pattern we sample, with the times of each pattern appears in the first class and the total times it appears in both classes, and their ratio. We also report the mean score and variance of each pattern.
 
 
