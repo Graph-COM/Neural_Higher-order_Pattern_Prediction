@@ -109,7 +109,10 @@ the main training code.
 different modules, including the HIT class, classifiers, self-attention pooling, and sum pooling.
 
 ## utils.py
-functions, including early stopper, ROC score function, preprocess the dataset, finding patterns and Dataset class.
+functions, including early stopper, ROC score function, and Dataset class.
+    
+## find_pattern.py
+prepare for the HIT model, finding high-order patterns 
 
 ## parser.py
 parsers
