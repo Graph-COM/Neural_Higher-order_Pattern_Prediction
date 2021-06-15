@@ -143,35 +143,9 @@ else:
                                                                       label_list=label_l, time_window_factor=time_window_factor, time_start_factor=time_start_factor, logger=logger)
     if not(os.path.exists(file_path)):
         os.makedirs(file_path)
-    # if DATA == 'threads_ask_ubuntu': # reason is that it's too big > 4G, so we can't directly save them using numpy.save
-    #     # in addition, since too many nega(edge in our paper), we can cut part of them
-    #     print("cut threads_ask_ubuntu since too many edge 6 Trillion. We only choose 6M.")
-    #     idx = np.array(range(6000000)) * 1000 # TODO: check the code here, if it doesn't work, please check cut_dataset.py . That should work
-    #     nega_new = [nega[0][idx], nega[1][idx], nega[2][idx], nega[3][idx], nega[4][idx]]
-    #     with open(file_path+'/triplets.npy', 'wb') as f: # TODO: if we cut here, then no need to use pickle
-    #         x = np.array([cls_tri, opn_tri, wedge, nega, set_all_nodes])
-    #         print(pickle.HIGHEST_PROTOCOL)
-    #         pickle.dump(x, f, protocol=pickle.HIGHEST_PROTOCOL)
-    # else:
     with open(file_path+'/triplets.npy', 'wb') as f:
         x = np.array([cls_tri, opn_tri, wedge, nega, set_all_nodes])
         np.save(f, x)
-    # with open(file_path+'/triplets_cls.npy', 'wb') as f:
-    #     x = np.array(cls_tri)
-    #     np.save(f, x)
-    # with open(file_path+'/triplets_opn.npy', 'wb') as f:
-    #     x = np.array(opn_tri)
-    #     np.save(f, x)
-    # with open(file_path+'/triplets_wedge.npy', 'wb') as f:
-    #     x = np.array(wedge)
-    #     np.save(f, x)
-    # with open(file_path+'/triplets_nega.npy', 'wb') as f:
-    #     x = np.array(nega)
-    #     np.save(f, x)
-    # with open(file_path+'/triplets_set_all_nodes.npy', 'wb') as f:
-    #     x = np.array(set_all_nodes)
-    #     np.save(f, x)
-    
 
 # triangle closure
 # choose 70% as training, 15% as validating, 15% as testing
