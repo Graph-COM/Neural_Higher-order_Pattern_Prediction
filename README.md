@@ -32,6 +32,12 @@ mkdir processed
 python preprocess.py -d <dataset>
 ```
 
+Before running the code, check if ./log exists. If not, 
+
+```{bash}
+mkdir log
+```
+
 After preprocessing the dataset, we can run the code for three different questions.
 ## For Q1 type prediction
 The task aims to solve the Q1 in the paper. What type of high-order interaction will most likely appear among u,v,w within (t, t + T_W]?
