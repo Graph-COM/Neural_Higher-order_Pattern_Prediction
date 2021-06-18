@@ -1,4 +1,4 @@
-# Neural Higher-order Pattern(Motif) Prediction in Temporal Networks
+# Neural Higher-order Pattern (Motif) Prediction in Temporal Networks
 
 # Requirements
 * `python = 3.7`, `PyTorch = 1.4`, please refer to their official websites for installation details.
