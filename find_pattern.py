@@ -61,12 +61,6 @@ def preprocess_dataset(ts_list, src_list, dst_list, node_max, edge_idx_list, lab
 
                 _i, _j, _l = _perm
                 
-                
-
-                # # if three nodes are different
-                # if len(set([_i, _j, _l])) != 3:
-                #     continue
-                
                 if ((_i, _j) in edges) and (edges[(_i, _j)] <= time_end) and (node_first_time[_l] < edges[(_i, _j)]):  #TODO: dict.get()
                 # assume w first appear at the same time as edge(u,v), then no previous information, no way to predict
                     timing = ts_list[i-1] - edges[(_i, _j)] 
@@ -254,6 +248,7 @@ def find_triangle_closure(ts_list, node_max, edges, adj_list, edges_idx, node_si
                 x3_idx = edges_idx[(l,i)]
                 # wedge: although can form a triangle, but out of window, we still consider it as wedge(wedge)
                 # it can't be an edge, since we already handle the edge cases in the previous part
+				# However, since this is not a real wedge, we can also just ignore it. The performance will not change much.
                 if x3 - x1 > time_window:
                     pass
                 # either be a triangle / closure

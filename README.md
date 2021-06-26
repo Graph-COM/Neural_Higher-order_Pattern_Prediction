@@ -1,5 +1,10 @@
 # Neural Higher-order Pattern (Motif) Prediction in Temporal Networks
 
+# Overview
+Dynamic systems that consist of a set of interacting elements can be abstracted as temporal networks. Recently, higher-order patterns that involve multiple interacting nodes have been found crucial to indicate domain-specific laws of different temporal networks. This posts us the challenge of designing more sophisticated hypergraph models for these higher-order patterns and the associated new learning algorithms. Here, we propose the first model, named HIT, for higher-order pattern prediction in temporal hypergraphs. Particularly, we focus on predicting three types of common but important interaction patterns involving three interacting elements in temporal networks, which could be extended to even higher-order patterns. HIT extracts the structural representation of anode triplet of interest on the temporal hypergraph and uses it to tell what type of, when, and why the interaction expansion could happen in this triplet. HIT could achieve significant improvement (averaged 20% AUC gain to identify the interaction type, uniformly more accurate time estimation) compared to both heuristic and other neural-network-based baselines on 5 real-world large temporal hypergraphs. Moreover, HIT provides a certain degree of interpretability by identifying the most discriminatory structural features on the temporal hypergraphs for predicting different higher-order patterns.
+
+![overview](./image/data2.png)
+
 # Requirements
 * `python = 3.7`, `PyTorch = 1.4`, please refer to their official websites for installation details.
 * Other dependencies:
@@ -86,13 +91,23 @@ We report all the pattern we sample, with the times of each pattern appears in t
 
 Finding edges, wedges, triangles, and closures process is in th utils.py. Since the finding process is time-consuming, the code will automatically save all the edges, wedges, triangles, closures in the saved_triplets. So the code doesn't need to run the process again in the future experiments.
 
-# Results
+# Some Results
 
-Our model achieves the following performance on :
+What type of interaction between w and u,v will appear if there is any? Our model achieves the following performance. The performance is 1-vs-1 AUC (mean±std) of higher-order pattern prediction.
 
-| Model name         |    tags-math-sx   | tags-ask-ubuntu |   congress-bills   |      DAWN       |  threads-ask-ubuntu  |
-| ------------------ | ----------------- | --------------- | ------------------ |---------------- | -------------------- |
-| HIT                |     77.05 ± 0.31    |   81.62 ± 0.69   |     81.10 ± 0.26    |   76.50 ± 0.79   |      86.25 ± 0.15     |
+| Model name         |     tags-math-sx    |  tags-ask-ubuntu  |   congress-bills   |       DAWN       |   threads-ask-ubuntu  |
+| ------------------ | ------------------- | ----------------- | ------------------ | ---------------- | --------------------- |
+| HIT                |     77.05 ± 0.31    |    81.62 ± 0.69   |    81.10 ± 0.26    |   76.50 ± 0.79   |      86.25 ± 0.15     |
+
+# Why will such a type of interaction appear?
+
+Our model indicates that Closures are more likely to happen than Triangles when the temporal random walks(TRWs) start from u,v (or w) and jump to some nodes that are directly connected to w (or u,v).  This means that u, v, w tend to form a Closure pattern if both u,w and v,w have common neighbors before.
+
+Compared with Closures and Triangles, Wedges are more likely to occur when the TRWs start from u (or v,w) and jump to some nodes that are still far away from the other two nodes
+
+If u and v have strong connections, i.e., the TRWs jump around u and v, they are more likely to become an Edge instread of a Wedge.
+
+![how](./image/how.png)
 
 # Main code and functions
     
