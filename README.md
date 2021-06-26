@@ -93,13 +93,21 @@ Finding edges, wedges, triangles, and closures process is in th utils.py. Since 
 
 # Some Results
 
-What type of interaction between w and u,v will appear if there is any? Our model achieves the following performance. The performance is 1-vs-1 AUC (mean±std) of higher-order pattern prediction.
+## What type of interaction between w and u,v will appear if there is any? 
+
+Our model achieves the following performance. The performance is 1-vs-1 AUC (mean±std) of higher-order pattern prediction.
 
 | Model name         |     tags-math-sx    |  tags-ask-ubuntu  |   congress-bills   |       DAWN       |   threads-ask-ubuntu  |
 | ------------------ | ------------------- | ----------------- | ------------------ | ---------------- | --------------------- |
 | HIT                |     77.05 ± 0.31    |    81.62 ± 0.69   |    81.10 ± 0.26    |   76.50 ± 0.79   |      86.25 ± 0.15     |
 
-# Why will such a type of interaction appear?
+## When will such a type of interaction appear?
+
+All the baselines share the same maximum-likelihood decoder for Q2 as HIT defined in Sec.4.2. We use NLL (Eq.5) as the evaluating metrics, which is superior in evaluating how different models learn the underlying distributions of the time.
+
+![when](./image/when.png)
+
+## Why will such a type of interaction appear?
 
 Our model indicates that Closures are more likely to happen than Triangles when the temporal random walks(TRWs) start from u,v (or w) and jump to some nodes that are directly connected to w (or u,v).  This means that u, v, w tend to form a Closure pattern if both u,w and v,w have common neighbors before.
 
