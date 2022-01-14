@@ -14,7 +14,7 @@ def eval_one_epoch(hint, model, dataset, val_flag='val', interpretation=False, t
     y_true, y_pred, y_score, y_one_hot_np = None, None, None, None
     dataset.reset()
     model.test = True
-    device = model.device
+    device = model.n_feat_th.data.device
     if interpretation:
         roc_auc_score = utils.roc_auc_score_single
     else:
@@ -75,7 +75,7 @@ def eval_one_epoch(hint, model, dataset, val_flag='val', interpretation=False, t
             elif time_prediction:
                 true_label_torch = torch.from_numpy(true_label).to(device)
                 _NLL_score, _ = model.contrast(src_1_l_cut, src_2_l_cut, dst_l_cut, ts_l_cut, e_l_cut, endtime_pos=true_label_torch)
-                ave_log_t, NLL_score, time_list = _NLL_score
+                ave_mae_t, ave_log_t, NLL_score, time_list = _NLL_score
                 # we compare the log t distribution
                 time_predicted = time_list[0].detach().cpu().numpy()
                 time_gt = time_list[1].detach().cpu().numpy()
@@ -92,9 +92,11 @@ def eval_one_epoch(hint, model, dataset, val_flag='val', interpretation=False, t
                 if NLL_total is None:
                     NLL_total = NLL_score
                     MSE_total = ave_log_t
+                    MAE_total = ave_mae_t
                 else:
                     NLL_total += NLL_score
                     MSE_total += ave_log_t
+                    MAE_total += ave_mae_t
             else:
                 pred_label = torch.argmax(pred_score, dim=1).cpu().detach().numpy()
                 pred_score = torch.nn.functional.softmax(pred_score, dim=1).cpu().numpy()
@@ -119,7 +121,8 @@ def eval_one_epoch(hint, model, dataset, val_flag='val', interpretation=False, t
     if time_prediction:
         print("NLL Loss  ", NLL_total / num_test_instance)
         print("MSE Loss  ", MSE_total / num_test_instance)
-        return NLL_total, num_test_instance, time_predicted_total, time_gt_total
+        print("MAE Loss  ", MAE_total / num_test_instance)
+        return NLL_total, MSE_total, MAE_total, num_test_instance, time_predicted_total, time_gt_total
     else:
         cm = confusion_matrix(y_true, y_pred)
         print('Confusion Matrix')
