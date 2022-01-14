@@ -2,7 +2,7 @@ import pandas as pd
 from log import set_up_logger
 from parser import *
 from eval import *
-from utils_bk import *
+from utils import *
 from train import *
 import os
 from module import HIT
@@ -527,6 +527,43 @@ class Graph_feature(object):
         x,y,z = self.JC(u, v, w)
         return gmean((x, y, z))
     
+    def cal_four_clique(self, u, v):
+        ans = 0
+        third_node = self.adjList[u].keys() & self.adjList[v].keys()
+        # print('third node', third_node)
+
+        for i in third_node:
+            ans += len(third_node & self.adjList[i].keys())
+            # print('ans ', ans)
+
+        return ans
+
+    def four_clique(self, u, v, w):
+        u = self.node2idx[u]
+        v = self.node2idx[v]
+        w = self.node2idx[w]
+        x, y, z = self.cal_four_clique(u, v), self.cal_four_clique(u,w), self.cal_four_clique(v,w)
+        p = x+y+z + 1
+        # print(x, y, z, p)
+        return x * 1.0 /p, y * 1.0 /p, z*1.0/p
+
+    def cal_four_diamond(self, u, v):
+        ans = 0
+        third_node = self.adjList[u].keys() & self.adjList[v].keys()
+        for i in third_node:
+            ans = ans + len(third_node | self.adjList[i].keys()) - len(third_node & self.adjList[i].keys())
+        return ans
+
+    def four_diamond(self, u, v, w):
+        u = self.node2idx[u]
+        v = self.node2idx[v]
+        w = self.node2idx[w]
+        x, y, z = self.cal_four_diamond(u, v), self.cal_four_diamond(u,w), self.cal_four_diamond(v,w)
+        p = x+y+z + 1
+        # return x/p, y/p, z/p
+        # print(x, y, z, p)
+        return x * 1.0 /p, y * 1.0 /p, z*1.0/p
+
     def Arith(self, u, v, w):
         u = self.node2idx[u]
         v = self.node2idx[v]
@@ -615,6 +652,15 @@ def dealData(src_l, dst_l, ts_l, src_1, src_2, dst, ts_cut, G, baseline):
         act = G.AA_Geom
         flag = 0
         feature = np.zeros((len(src_1), 1))
+    elif baseline == 'four_clique':
+        act = G.four_clique
+        flag = 1
+        feature = np.zeros((len(src_1), 3)) 
+    elif baseline == 'four_diamond':
+        act = G.four_diamond
+        flag = 1
+        feature = np.zeros((len(src_1), 3)) 
+
 
     nodeTimeDict = {}
     nodeTimePairDict = {}
@@ -788,6 +834,8 @@ if args.model in ['JC', 'AA', 'PA']:
 elif args.model in ['Arith', 'Geom', 'Harm']:
     embed_size = 1
 elif ('Benson' in args.model) or ('Arith' in args.model) or ('Geom' in args.model) or ('Harm' in args.model) :
+    embed_size = 1
+elif ('four' in args.model):
     embed_size = 1
 
 if interpretation:
