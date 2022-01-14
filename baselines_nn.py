@@ -61,6 +61,8 @@ def eval_one_epoch(hint, model, dataset, val_flag='val', interpretation=False, t
         walk_pattern_label_total = None
         walk_score_total = None
         NLL_total = None
+        MSE_total = None
+        MAE_total = None
         time_predicted_total = None
         time_gt_total = None
         loop_num = num_test_batch
@@ -74,7 +76,7 @@ def eval_one_epoch(hint, model, dataset, val_flag='val', interpretation=False, t
                 # _NLL_score, _ = model.contrast(src_1_l_cut, src_2_l_cut, dst_l_cut, ts_l_cut, e_l_cut, endtime_pos=true_label_torch)
                 # print(true_label_torch)
                 _NLL_score = model(src_1_l_cut, src_2_l_cut, dst_l_cut, true_label_torch)
-                ave_log_t, NLL_score, time_list = _NLL_score
+                ave_mae_t, ave_log_t, NLL_score, time_list = _NLL_score
                 # we compare the log t distribution
                 time_predicted = time_list[0].detach().cpu().numpy()
                 time_gt = time_list[1].detach().cpu().numpy()
@@ -91,9 +93,11 @@ def eval_one_epoch(hint, model, dataset, val_flag='val', interpretation=False, t
                 if NLL_total is None:
                     NLL_total = NLL_score
                     MSE_total = ave_log_t
+                    MAE_total = ave_mae_t
                 else:
                     NLL_total += NLL_score
                     MSE_total += ave_log_t
+                    MAE_total += ave_mae_t
             else:
                 pred_label = torch.argmax(pred_score, dim=1).cpu().detach().numpy()
                 pred_score = torch.nn.functional.softmax(pred_score, dim=1).cpu().numpy()
@@ -118,6 +122,7 @@ def eval_one_epoch(hint, model, dataset, val_flag='val', interpretation=False, t
     if time_prediction:
         logger.info("NLL Loss  " + str(NLL_total / num_test_instance))
         logger.info("MSE Loss  " + str(MSE_total / num_test_instance))
+        logger.info("MAE Loss  " + str(MAE_total / num_test_instance))
         # print("min time_predicted_total", min(time_predicted_total))
         # print("min time_gt_total", min(time_gt_total))
         return NLL_total, num_test_instance, time_predicted_total, time_gt_total
@@ -164,10 +169,11 @@ def train_val(dataset, model, mode, bs, epochs, criterion, optimizer, early_stop
 
         acc, ap, f1, auc, m_loss = [], [], [], [], []
         logger.info('start {} epoch'.format(epoch))
-        NLL_total = None
+        NLL_total = None; MSE_total = None; MAE_total = None
         y_true, y_pred, y_one_hot_np = None, None, None
 
         for k in tqdm(range(int(num_batch))):
+        # for k in tqdm(range(int(1))):
             batch_idx, true_label = dataset.train_samples_baselines()
             src_1_l_cut = src_1_emb_cut[batch_idx]
             src_2_l_cut = src_2_emb_cut[batch_idx]
@@ -179,7 +185,8 @@ def train_val(dataset, model, mode, bs, epochs, criterion, optimizer, early_stop
                 true_label_torch = torch.from_numpy(true_label).to(device)
                 # _pred_score, _ = model.contrast(src_1_l_cut, src_2_l_cut, dst_l_cut, ts_l_cut, e_l_cut, endtime_pos=true_label_torch)   # the core training code
                 _pred_score = model(src_1_l_cut, src_2_l_cut, dst_l_cut, true_label_torch)
-                ave_log_t, pred_score, _ = _pred_score
+                # print("_pred_score", _pred_score, "true_label_torch", true_label_torch)
+                ave_mae_t, ave_log_t, pred_score, _ = _pred_score
             else:
                 true_label_torch = torch.from_numpy(true_label).long().to(device)
                 # pred_score, _ = model.contrast(src_1_l_cut, src_2_l_cut, dst_l_cut, ts_l_cut, e_l_cut)   # the core training code
@@ -190,6 +197,7 @@ def train_val(dataset, model, mode, bs, epochs, criterion, optimizer, early_stop
             else:
                 loss = criterion(pred_score, true_label_torch)
             
+            # print("loss", loss)
             loss.backward()
             optimizer.step()
             
@@ -199,10 +207,12 @@ def train_val(dataset, model, mode, bs, epochs, criterion, optimizer, early_stop
                 if time_prediction:
                     if NLL_total is None:
                         NLL_total = pred_score
-                        MSE = ave_log_t
+                        MSE_total = ave_log_t
+                        MAE_total = ave_mae_t
                     else:
                         NLL_total += pred_score
-                        MSE += ave_log_t
+                        MSE_total += ave_log_t
+                        MAE_total += ave_mae_t
                 else:
                     pred_label = torch.argmax(pred_score, dim=1).cpu().detach().numpy()
                     acc.append((pred_label == true_label).mean())
@@ -223,7 +233,8 @@ def train_val(dataset, model, mode, bs, epochs, criterion, optimizer, early_stop
         if time_prediction:
             logger.info("train")
             logger.info("NLL " + str(NLL_total/dataset.get_size()))
-            logger.info("MSE " + str(MSE/dataset.get_size()))
+            logger.info("MSE " + str(MSE_total/dataset.get_size()))
+            logger.info("MAE " + str(MAE_total/dataset.get_size()))
         else:
             print("train")
             cm = confusion_matrix(y_true, y_pred)
