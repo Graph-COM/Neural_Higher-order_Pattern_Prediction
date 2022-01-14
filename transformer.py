@@ -48,8 +48,13 @@ class TransformerEncoderLayer(nn.Module):
         Shape:
             see the docs in Transformer class.
         """
-        src2 = self.self_attn(src, src, src, attn_mask=src_mask,
-                              key_padding_mask=src_key_padding_mask)[0]
+        # changed in 2021/11/11
+        # bug in transformer
+
+        src_t = src.transpose(0, 1)
+
+        src2 = self.self_attn(src_t, src_t, src_t, attn_mask=src_mask,
+                              key_padding_mask=src_key_padding_mask)[0].transpose(0, 1)
         src = src + self.dropout1(src2)
         src = self.norm1(src)
         if hasattr(self, "activation"):
