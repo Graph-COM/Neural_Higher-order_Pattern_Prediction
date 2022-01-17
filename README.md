@@ -43,6 +43,13 @@ Before running the code, check if ./log exists. If not,
 mkdir log
 ```
 
+We also prepare the threads-ask-ubuntu dataset for the demo(about 500MB), which can be found [here](https://drive.google.com/file/d/1DIi85QTdmTwOMPtoYYDdFNE9fx8pOCtx/view?usp=sharing). After download the dataset, moved the triplet.npy to the folder ./saved_triplets/threads-ask-ubuntu/threads-ask-ubuntu_0.4_0.1/ . Then you can run the code with the following tasks, e.g.,
+```{bash}
+python main.py -d threads-ask-ubuntu
+```
+
+triplet.npy should contains all different closures, triangles, wedges and edges given t and T_W. However, it will be too large to save them all. Thus we only choose part of them and trained our model based on the sampling datasets. Based on the experiment, this will not affect the performance too much. More detailed information regarding how we sample the data can be found in cut_dataset.py .
+
 After preprocessing the dataset, we can run the code for three different questions.
 ## For Q1 type prediction
 The task aims to solve the Q1 in the paper. What type of high-order interaction will most likely appear among u,v,w within (t, t + T_W]?
