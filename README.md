@@ -146,3 +146,15 @@ prepare for the HIT model, finding high-order patterns
 
 ## parser.py
 parsers
+
+# Citation
+Please cite our paper if you like or use our work for your research, thank you very much!
+```
+@inproceedings{liu2021neural,
+  title={Neural Predicting Higher-order Patterns in Temporal Networks},
+  author={Liu, Yunyu and Ma, Jianzhu and Li, Pan},
+  booktitle={WWW},
+  year={2022}
+}
+```
+
