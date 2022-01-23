@@ -106,7 +106,7 @@ Our model achieves the following performance. The performance is 1-vs-1 AUC (mea
 
 | Model name         |     tags-math-sx    |  tags-ask-ubuntu  |   congress-bills   |       DAWN       |   threads-ask-ubuntu  |
 | ------------------ | ------------------- | ----------------- | ------------------ | ---------------- | --------------------- |
-| HIT                |     77.05 ± 0.31    |    81.62 ± 0.69   |    81.10 ± 0.26    |   76.50 ± 0.79   |      86.25 ± 0.15     |
+| HIT                |     74.07 ± 0.46    |    78.83 ± 0.43   |    79.83 ± 0.61    |   78.92 ± 0.61   |      84.22 ± 0.68     |
 
 ## When will such a type of interaction appear?
 
