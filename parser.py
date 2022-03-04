@@ -14,7 +14,7 @@ def get_args():
     parser.add_argument('--data_usage', default=1.0, type=float, help='portion of data to use (0-1)')
 
     # methodology-related hyper-parameters
-    parser.add_argument('--n_degree', nargs='*', default=['64', '1'],
+    parser.add_argument('--n_degree', nargs='*', default=['64', '2'],
                         help='a list of neighbor sampling numbers for different hops, when only a single element is input n_layer will be activated')
     parser.add_argument('--n_layer', type=int, default=1, help='number of network layers')
     parser.add_argument('--bias', default=1e-5, type=float, help='alpha for TRWs, controlling sampling preference with time closeness, default to 0 which is uniform sampling')
@@ -22,7 +22,6 @@ def get_args():
                         help='tree based hierarchical aggregation or walk-based flat lstm aggregation')
     parser.add_argument('--pos_enc', type=str, default='lp', choices=['spd', 'lp', 'saw','concat', 'sum_pooling', 'sum_pooling_after'], help='way to encode distances, shortest-path distance or lp means counting, self-based anonymous walk (baseline), concat, sum_pooling and sum_pooling_after are baselines')
     parser.add_argument('--pos_dim', type=int, default=108, help='dimension of the positional embedding(model dim mod 16 == 0); 12 <=> no distance encoding, used for ablation study')
-    parser.add_argument('--time_dim', type=int, default=164, help='dimension of the time embedding(model dim mod 16 == 0); 12 <=> no distance encoding, used for ablation study')
     parser.add_argument('--pos_sample', type=str, default='multinomial', choices=['multinomial', 'binary'], help='two practically different sampling methods that are equivalent in theory ')
     parser.add_argument('--walk_pool', type=str, default='attn', choices=['attn', 'sum'], help='how to pool the encoded walks, using attention or simple sum, if sum will overwrite all the other walk_ arguments')
     parser.add_argument('--walk_n_head', type=int, default=8, help="number of heads to use for walk attention")
@@ -63,7 +62,7 @@ def get_args():
     # parameters for baselines
     parser.add_argument('--test_baselines', action='store_true', default=False, help='test baselines or not')
     # parser.add_argument('--data', required=True, help='Network name')
-    parser.add_argument('--model', default='tgat', choices=['jodie', 'nhp', 'tgn', 'tgat', 'JC', 'PA', 'AA', 'Arith', 'Geom', 'Harm', 'AA_Arith', 'AA_Benson', 'JC_Arith', 'JC_Benson', 'PA_Arith', 'PA_Benson', 'AA_Geom', 'PA_Geom', 'JC_Geom'], help="Model name")
+    parser.add_argument('--model', default='tgat', choices=['jodie', 'nhp', 'tgn', 'tgat', 'dyrep','JC', 'PA', 'AA', 'Arith', 'Geom', 'Harm', 'AA_Arith', 'AA_Benson', 'JC_Arith', 'JC_Benson', 'PA_Arith', 'PA_Benson', 'AA_Geom', 'PA_Geom', 'JC_Geom', 'four_clique', 'four_diamond'], help="Model name")
     
 
 

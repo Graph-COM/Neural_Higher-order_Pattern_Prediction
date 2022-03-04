@@ -8,7 +8,7 @@ from torch.nn.utils.rnn import pack_padded_sequence, pad_packed_sequence
 from transformer import TransformerEncoderLayer, TransformerDecoderLayer
 from utils import *
 from position import *
-from numba import jit
+# from numba import jit
 PRECISION = 5
 POS_DIM_ALTER = 100
 
@@ -57,6 +57,7 @@ class finalClassifier_time_prediction(torch.nn.Module):
         super().__init__()
         self.fc2 = torch.nn.Linear(dim4, dim5)
         self.act = torch.nn.ReLU()
+        self.sigmoid = torch.nn.Sigmoid()
         torch.nn.init.xavier_normal_(self.fc2.weight)
         self.MLP_two_nodes = torch.nn.Linear(dim1 + dim3, dim4)
         self.N = N
@@ -74,24 +75,32 @@ class finalClassifier_time_prediction(torch.nn.Module):
 
     def forward(self, x1, x2, x3, t):
         t += 1 # in case t = 1, then log t = 0
-        f = self.act(self.MLP_two_nodes(torch.cat([x1 + x2, x3], dim=-1)))
+        # t /= 1e5
+        f = self.sigmoid(self.MLP_two_nodes(torch.cat([x1 + x2, x3], dim=-1)))
 
         mu = self.fc_mu(f).view(-1, self.N)
         t = torch.log(t.view(-1, 1))
-        
+        # print("self.fc_log_var(f)", self.fc_log_var(f))
         var = torch.exp(self.fc_log_var(f)).view(-1, self.N) # var
         prec = torch.sqrt(var * 2 * np.pi) 
         weight = self.fc_weight(f).view(-1, self.N)
-
+        # print((mu * mu, t * t, 2 * t * mu))
+        # print("var", var)
+        # print("prec", prec)
+        # print("weight", weight)
         log_p = torch.exp( - (mu * mu + t * t - 2 * t * mu) / (var * 2)) / prec * weight # TODO: no torch.pi and pi should be on the device prec=>(prec * 2 * \pi)
         result = - torch.log(torch.sum(log_p, dim=1))
+        # print("log_p", log_p)
+        # print("sum_log_p", torch.sum(log_p))
+
         time_predicted = torch.sum(mu * weight, dim=1)
         time_gt = t.view(-1)
-        MSE = torch.norm(time_predicted - time_gt, 2)
+        MAE_loss = torch.sum(torch.abs(time_predicted - time_gt))
+        MSE_loss = torch.norm(time_predicted - time_gt, 2)
         if self.sum_data:
-            return MSE, torch.sum(result), [time_predicted, time_gt]
+            return MAE_loss, MSE_loss, torch.sum(result), [time_predicted, time_gt]
         else:
-            return MSE, result, [time_predicted, time_gt]
+            return MAE_loss, MSE_loss, result, [time_predicted, time_gt]
         
 
 class finalClassifier_inter(torch.nn.Module):
@@ -473,12 +482,12 @@ class AttnModel(torch.nn.Module):
 
 
 class HIT(torch.nn.Module):
-    def __init__(self, agg='tree',
-                 attn_mode='prod', use_time='time', attn_agg_method='attn', time_dim=0,
+    def __init__(self, n_feat, e_feat, agg='tree',
+                 attn_mode='prod', use_time='time', attn_agg_method='attn',
                  pos_dim=0, pos_enc='spd', walk_pool='attn', walk_n_head=8, walk_mutual=False,
                  num_layers=3, n_head=4, drop_out=0.1, num_neighbors=20, cpu_cores=1,
                  verbosity=1, get_checkpoint_path=None, walk_linear_out=False, interpretation=False, 
-                 interpretation_type=0, time_prediction=True, ablation=False, ablation_type=0, device=None):
+                 interpretation_type=0, time_prediction=True, ablation=False, ablation_type=0):
         super(HIT, self).__init__()
         self.logger = logging.getLogger(__name__)
         self.verbosity = verbosity
@@ -487,17 +496,18 @@ class HIT(torch.nn.Module):
         self.num_neighbors, self.num_layers = process_sampling_numbers(num_neighbors, num_layers)
         self.ngh_finder = None
 
-        # device
-        self.device = device
+        # features
+        self.n_feat_th = torch.nn.Parameter(torch.from_numpy(n_feat.astype(np.float32)), requires_grad=False)
+        self.e_feat_th = torch.nn.Parameter(torch.from_numpy(e_feat.astype(np.float32)), requires_grad=False)
 
         # label
+        # self.num_class = 4
         self.interpretation_type = interpretation_type
         self.time_prediction = time_prediction
         self.ablation_type = ablation_type
         self.ablation = ablation
         print("inter type", interpretation_type)
-        
-        # for different task we have different labels
+        # if (interpretation_type == 1) or (interpretation_type == 2) or (interpretation_type == 3) or (interpretation_type == 4):
         if interpretation:
             self.num_class = 2
         elif time_prediction:
@@ -512,14 +522,14 @@ class HIT(torch.nn.Module):
         self.test = True
 
         # dimensions of 4 elements: node, edge, time, position
-        self.feat_dim = time_dim
-        self.time_dim = time_dim  # time (learnable fourier) feature dimension
-        self.pos_dim = pos_dim    # position feature dimension
+        self.feat_dim = self.n_feat_th.shape[1]  # node feature dimension
+        self.e_feat_dim = self.e_feat_th.shape[1]  # edge feature dimension
+        self.time_dim = self.feat_dim  # default to be time feature dimension
+        self.pos_dim = pos_dim  # position feature dimension
         self.pos_enc = pos_enc
-       
-        self.model_dim = self.time_dim + self.pos_dim
-
-        self.logger.info('neighbors: {}, pos dim: {}, edge dim: {}'.format(self.num_neighbors, self.pos_dim, self.time_dim))
+        self.model_dim = self.feat_dim + self.e_feat_dim + self.time_dim + self.pos_dim
+        print("model dim, posdim", self.model_dim, self.pos_dim)
+        self.logger.info('neighbors: {}, node dim: {}, edge dim: {}, pos dim: {}, edge dim: {}'.format(self.num_neighbors, self.feat_dim, self.e_feat_dim, self.pos_dim, self.time_dim))
 
         # aggregation method
         self.agg = agg
@@ -534,24 +544,27 @@ class HIT(torch.nn.Module):
         self.dropout_p = drop_out
 
         # embedding layers and encoders
+        self.edge_raw_embed = torch.nn.Embedding.from_pretrained(self.e_feat_th, padding_idx=0, freeze=True)
+        # self.source_edge_embed = nn.parameter(torch.tensor()self.e_feat_dim)
+        self.node_raw_embed = torch.nn.Embedding.from_pretrained(self.n_feat_th, padding_idx=0, freeze=True)
         self.time_encoder = self.init_time_encoder(use_time, seq_len=self.num_neighbors[0])
-        if self.pos_dim > 12: # the reason why we use pos_dim is because the attention model needs the dimension to be divided by 8
+        if self.pos_dim > 12:
             print('use DE')
             self.position_encoder = PositionEncoder(enc_dim=self.pos_dim, num_layers=self.num_layers, ngh_finder=self.ngh_finder,
                                                     cpu_cores=cpu_cores, verbosity=verbosity, logger=self.logger, enc=self.pos_enc)
         else:
             print('not using DE')
-
         # attention model
-        if self.agg == 'tree': # no use in this code
+        if self.agg == 'tree':
             self.attn_model_list = self.init_attn_model_list(attn_agg_method, attn_mode, n_head, drop_out)
         elif self.agg == 'walk':
             self.random_walk_attn_model = self.init_random_walk_attn_model()
         else:
             raise NotImplementedError('{} forward propagation strategy not implemented.'.format(self.agg))
 
+        # # final projection layer
+        # self.affinity_score = finalClassifier(self.feat_dim, self.feat_dim, self.feat_dim, self.feat_dim, 4) # cls_tri, opn_tri, wedge, neg
         # final projection layer
-        # different model for different tasks
         if (interpretation):
             self.interpretation = True
             self.affinity_score = finalClassifier_inter(self.feat_dim, self.feat_dim, self.feat_dim, self.feat_dim, self.num_class)
@@ -568,6 +581,8 @@ class HIT(torch.nn.Module):
         self.get_checkpoint_path = get_checkpoint_path
 
         self.flag_for_cur_edge = True  # flagging whether the current edge under computation is real edges, for data analysis
+        # self.common_node_percentages = {'pos': [], 'neg': []}
+        # self.walk_encodings_scores = {'encodings': [], 'scores': []}
 
     def init_attn_model_list(self, attn_agg_method, attn_mode, n_head, drop_out):
         if attn_agg_method == 'attn':
@@ -594,8 +609,7 @@ class HIT(torch.nn.Module):
                                                      model_dim=self.model_dim, out_dim=self.feat_dim,
                                                      walk_pool=self.walk_pool,
                                                      n_head=self.walk_n_head, mutual=self.walk_mutual,
-                                                     dropout_p=self.dropout_p, logger=self.logger, walk_linear_out=self.walk_linear_out,
-                                                     device=self.device)
+                                                     dropout_p=self.dropout_p, logger=self.logger, walk_linear_out=self.walk_linear_out)
         return random_walk_attn_model
 
     def init_time_encoder(self, use_time, seq_len):
@@ -615,9 +629,10 @@ class HIT(torch.nn.Module):
 
     def contrast(self, src_idx_l_1, src_idx_l_2, tgt_idx_l, cut_time_l_pos, e_idx_l_pos, endtime_pos=None):
         '''
-        1. grab subgraph for src_1, src_2, tgt
+        1. grab subgraph for src, tgt, bgd
         2. add positional encoding for src & tgt nodes
-        3. forward propagate to get src_1, src_2 embeddings and tgt embeddings (and finally pos_score (shape: [batch, ]))
+        3. forward propagate to get src embeddings and tgt embeddings (and finally pos_score (shape: [batch, ]))
+        4. forward propagate to get src embeddings and bgd embeddings (and finally neg_score (shape: [batch, ]))
         '''
         start = time.time()
         # cut_time_l_pos += 0.0001 # original is integer. /1000, so the delta t can be 0.0001
@@ -697,21 +712,32 @@ class HIT(torch.nn.Module):
         # 2. get time encodings for all hops
         # 3. get edge features for all in-between hops
         # 4. iterate over hidden embeddings for each layer
-        masks = self.init_hidden_embeddings(src_idx_l, node_records)  # length self.num_layers+1
+        hidden_embeddings, masks = self.init_hidden_embeddings(src_idx_l, node_records)  # length self.num_layers+1
+        # only for testing
+        # masks = torch.ones_like(masks) * 3
         time_features = self.retrieve_time_features(cut_time_l, t_records)  # length self.num_layers+1
+        edge_features = self.retrieve_edge_features(eidx_records)  # length self.num_layers
         if self.pos_dim > 12:
             position_features, walk_pattern = self.retrieve_position_features(src_idx_l, node_records, cut_time_l, t_records, test=self.test, interpretation=self.interpretation)  # length self.num_layers+1, core contribution
         else:
-            position_features = torch.zeros((*time_features.shape[:-1], self.pos_dim)).to(self.device)
+            # print(time_features.shape, edge_features.shape)
+            position_features = torch.zeros((*time_features.shape[:-1], self.pos_dim)).to(self.n_feat_th.device)
+            # print(position_features.shape)
             walk_pattern = None
-        if self.agg == 'walk':
+        if self.agg == 'tree':
+            n_layer = self.num_layers
+            for layer in range(n_layer):
+                hidden_embeddings = self.forward_msg_layer(hidden_embeddings, time_features[:n_layer+1-layer],
+                                                           edge_features[:n_layer-layer], position_features[:n_layer+1-layer],
+                                                           masks[:n_layer-layer], self.attn_model_list[layer])
+            final_node_embeddings = hidden_embeddings[0].squeeze(1)
+        elif self.agg == 'walk':
             # Notice that eidx_records[:, :, 1] may be all None
             # random walk branch logic:
             # 1. get the feature matrix shaped [batch, n_walk, len_walk + 1, node_dim + edge_dim + time_dim + pos_dim]
             # 2. feed the matrix forward to LSTM, then transformer, now shaped [batch, n_walk, transformer_model_dim]
             # 3. aggregate and collapse dim=1 (using set operation), now shaped [batch, out_dim]
-            # final_node_embeddings = self.forward_msg_walk(hidden_embeddings, time_features, edge_features, position_features, masks)
-            final_node_embeddings = self.forward_msg_walk(time_features, position_features, masks)
+            final_node_embeddings = self.forward_msg_walk(hidden_embeddings, time_features, edge_features, position_features, masks)
         else:
             raise NotImplementedError('{} forward propagation strategy not implemented.'.format(self.agg))
         return walk_pattern,  final_node_embeddings
@@ -720,19 +746,37 @@ class HIT(torch.nn.Module):
         return self.random_walk_attn_model.mutual_query( src_embed_1, src_embed_2, tgt_embed)
 
     def init_hidden_embeddings(self, src_idx_l, node_records):
-        device = self.device
-        if self.agg == 'walk':
+        device = self.n_feat_th.device
+        if self.agg == 'tree':
+            hidden_embeddings, masks = [], []
+            hidden_embeddings.append(self.node_raw_embed(torch.from_numpy(np.expand_dims(src_idx_l, 1)).long().to(device)))
+            for i in range(len(node_records)):
+                batch_node_idx = torch.from_numpy(node_records[i]).long().to(device)
+                hidden_embeddings.append(self.node_raw_embed(batch_node_idx))
+                masks.append(batch_node_idx == 0)
+        elif self.agg == 'walk':
             node_records_th = torch.from_numpy(node_records).long().to(device)
+            hidden_embeddings = self.node_raw_embed(node_records_th)  # shape [batch, n_walk, len_walk+1, node_dim]
             masks = (node_records_th != 0).sum(dim=-1).long()  # shape [batch, n_walk], here the masks means differently: it records the valid length of each walk
         else:
             raise NotImplementedError('{} forward propagation strategy not implemented.'.format(self.agg))
-        return masks
-        # return hidden_embeddings, masks
+        return hidden_embeddings, masks
 
     def retrieve_time_features(self, cut_time_l, t_records):
-        device = self.device
+        device = self.n_feat_th.device
         batch = len(cut_time_l)
-        if self.agg == 'walk':
+        if self.agg == 'tree':
+            first_time_stamp = np.expand_dims(cut_time_l, 1)
+            time_features = [self.time_encoder(torch.from_numpy(np.zeros_like(first_time_stamp)).float().to(device))]
+            standard_timestamps = np.expand_dims(first_time_stamp, 2)
+            for layer_i in range(len(t_records)):
+                t_record = t_records[layer_i]
+                time_delta = standard_timestamps - t_record.reshape(batch, -1, self.num_neighbors[layer_i])
+                time_delta = time_delta.reshape(batch, -1)
+                time_delta = torch.from_numpy(time_delta).float().to(device)
+                time_features.append(self.time_encoder(time_delta))
+                standard_timestamps = np.expand_dims(t_record, 2)
+        elif self.agg == 'walk':
             t_records_th = torch.from_numpy(t_records).float().to(device)
             t_records_th = t_records_th.select(dim=-1, index=0).unsqueeze(dim=2) - t_records_th
             n_walk, len_walk = t_records_th.size(1), t_records_th.size(2)
@@ -742,38 +786,36 @@ class HIT(torch.nn.Module):
             raise NotImplementedError('{} forward propagation strategy not implemented.'.format(self.agg))
         return time_features
 
-    # Since no edge features, no use
-    # def retrieve_edge_features(self, eidx_records):
-    #     # Notice that if subgraph is tree, then len(eidx_records) is just the number of hops, excluding the src node
-    #     # but if subgraph is walk, then eidx_records contains the random walks of length len_walk+1, including the src node
-    #     device = self.device
-    #     if self.agg == 'tree':
-    #         edge_features = []
-    #         for i in range(len(eidx_records)):
-    #             batch_edge_idx = torch.from_numpy(eidx_records[i]).long().to(device)
-    #             edge_features.append(self.edge_raw_embed(batch_edge_idx))
-    #     elif self.agg == 'walk':
-    #         eidx_records_th = torch.from_numpy(eidx_records).to(device)
-    #         eidx_records_th[:, :, 0] = 0   # NOTE: this will NOT be mixed with padded 0's since those paddings are denoted by masks and will be ignored later in lstm
-    #         edge_features = self.edge_raw_embed(eidx_records_th)  # shape [batch, n_walk, len_walk+1, edge_dim]
-    #     else:
-    #         raise NotImplementedError('{} forward propagation strategy not implemented.'.format(self.agg))
-    #     return edge_features
+    def retrieve_edge_features(self, eidx_records):
+        # Notice that if subgraph is tree, then len(eidx_records) is just the number of hops, excluding the src node
+        # but if subgraph is walk, then eidx_records contains the random walks of length len_walk+1, including the src node
+        device = self.n_feat_th.device
+        if self.agg == 'tree':
+            edge_features = []
+            for i in range(len(eidx_records)):
+                batch_edge_idx = torch.from_numpy(eidx_records[i]).long().to(device)
+                edge_features.append(self.edge_raw_embed(batch_edge_idx))
+        elif self.agg == 'walk':
+            eidx_records_th = torch.from_numpy(eidx_records).to(device)
+            eidx_records_th[:, :, 0] = 0   # NOTE: this will NOT be mixed with padded 0's since those paddings are denoted by masks and will be ignored later in lstm
+            edge_features = self.edge_raw_embed(eidx_records_th)  # shape [batch, n_walk, len_walk+1, edge_dim]
+        else:
+            raise NotImplementedError('{} forward propagation strategy not implemented.'.format(self.agg))
+        return edge_features
 
-    
-    def forward_msg_layer(self, hidden_embeddings, time_features, position_features, masks, attn_m):
+    def forward_msg_layer(self, hidden_embeddings, time_features, edge_features, position_features, masks, attn_m):
         assert(len(hidden_embeddings) == len(time_features)) 
-        # assert(len(hidden_embeddings) == (len(edge_features) + 1)) 
-        # assert(len(masks) == len(edge_features))
+        assert(len(hidden_embeddings) == (len(edge_features) + 1)) 
+        assert(len(masks) == len(edge_features))
         assert(len(hidden_embeddings) == len(position_features))
         new_src_embeddings = []
-        for i in range(len(hidden_embeddings)):
+        for i in range(len(edge_features)):
             src_embedding = hidden_embeddings[i]
             src_time_feature = time_features[i]
             src_pos_feature = position_features[i]
             ngh_embedding = hidden_embeddings[i+1]
             ngh_time_feature = time_features[i+1]
-            # ngh_edge_feature = edge_features[i]
+            ngh_edge_feature = edge_features[i]
             ngh_pos_feature = position_features[i+1]
             ngh_mask = masks[i]
             # NOTE: n_neighbor_support = n_source_support * num_neighbor this layer
@@ -784,26 +826,36 @@ class HIT(torch.nn.Module):
                                                  src_pos_feature, # shape [batch, n_source_support, pos_dim]
                                                  ngh_embedding,  # shape [batch, n_neighbor_support, feat_dim]
                                                  ngh_time_feature,  # shape [batch, n_neighbor_support, time_feat_dim]
+                                                 ngh_edge_feature,  # shape [batch, n_neighbor_support, edge_feat_dim]
                                                  ngh_pos_feature, # shape [batch, n_neighbor_support, pos_dim]
                                                  ngh_mask)  # shape [batch, n_neighbor_support]
 
             new_src_embeddings.append(new_src_embedding)
         return new_src_embeddings
 
-    # def forward_msg_walk(self, hidden_embeddings, time_features, edge_features, position_features, masks):
-    def forward_msg_walk(self, time_features, position_features, masks):
-        return self.random_walk_attn_model.forward_one_node(time_features, position_features, masks)
+    def forward_msg_walk(self, hidden_embeddings, time_features, edge_features, position_features, masks):
+        return self.random_walk_attn_model.forward_one_node(hidden_embeddings, time_features, edge_features,
+                                                            position_features, masks)
 
     def retrieve_position_features(self, src_idx_l, node_records, cut_time_l, t_records, test=False, interpretation=False):
         start = time.time()
         encode = self.position_encoder
-        if self.agg == 'walk':
+        if self.agg == 'tree':
+            if encode.enc_dim == 0:
+                return [None]*(len(node_records)+1)
+            position_feature, common_nodes = encode(np.expand_dims(src_idx_l, 1), np.expand_dims(cut_time_l, 1))
+            position_features = [position_feature]
+            for i in range(len(node_records)):
+                position_feature, common_nodes = encode(node_records[i], t_records[i])
+                position_features.append(position_feature)
+                # self.update_common_node_percentages(common_nodes)
+        elif self.agg == 'walk':
             if encode.enc_dim == 0:
                 return None
             batch, n_walk, len_walk = node_records.shape
             new_node_records = self.position_encoder.anonymize(node_records)
             node_records_r, t_records_r = new_node_records.reshape(batch, -1), t_records.reshape(batch, -1)
-            position_features, walk_encodings, walk_pattern = encode(node_records_r, t_records_r, test, self.interpretation_type)
+            position_features, common_nodes, walk_encodings, walk_pattern = encode(node_records_r, t_records_r, test, self.interpretation_type)
             position_features = position_features.view(batch, n_walk, len_walk, self.pos_dim)
         
         else:
@@ -818,17 +870,17 @@ class HIT(torch.nn.Module):
         if self.pos_dim > 12:
             self.position_encoder.ngh_finder = ngh_finder
 
-    # def update_common_node_percentages(self, common_node_percentage):
-    #     if self.flag_for_cur_edge:
-    #         self.common_node_percentages['pos'].append(common_node_percentage)
-    #     else:
-    #         self.common_node_percentages['neg'].append(common_node_percentage)
+    def update_common_node_percentages(self, common_node_percentage):
+        if self.flag_for_cur_edge:
+            self.common_node_percentages['pos'].append(common_node_percentage)
+        else:
+            self.common_node_percentages['neg'].append(common_node_percentage)
 
-    # def save_common_node_percentages(self, dir):
-    #     torch.save(self.common_node_percentages, dir + '/common_node_percentages.pt')
+    def save_common_node_percentages(self, dir):
+        torch.save(self.common_node_percentages, dir + '/common_node_percentages.pt')
 
-    # def save_walk_encodings_scores(self, dir):
-    #     torch.save(self.walk_encodings_scores, dir + '/walk_encodings_scores.pt')
+    def save_walk_encodings_scores(self, dir):
+        torch.save(self.walk_encodings_scores, dir + '/walk_encodings_scores.pt')
 
 
 class PositionEncoder(nn.Module):
@@ -884,12 +936,15 @@ class PositionEncoder(nn.Module):
             return
         start = time.time()
         # initialize internal data structure to index node positions
+        # self.nodetime2emb_maps = self.collect_pos_mapping_ptree(src_idx_l, tgt_idx_l, cut_time_l, subgraph_src,
+        #                                                         subgraph_tgt)
         self.nodetime2emb_maps = self.collect_pos_mapping_ptree(src_idx_l_1, src_idx_l_2, tgt_idx_l, cut_time_l, subgraph_src_1, subgraph_src_2,
                                                                 subgraph_tgt)
         end = time.time()
         if self.verbosity > 1:
             self.logger.info('init positions encodings for the minibatch, time eclipsed: {} seconds'.format(str(end-start)))
 
+    # def collect_pos_mapping_ptree(self, src_idx_l, tgt_idx_l, cut_time_l, subgraph_src, subgraph_tgt):
     def collect_pos_mapping_ptree(self, src_idx_l_1, src_idx_l_2, tgt_idx_l, cut_time_l, subgraph_src_1, subgraph_src_2, subgraph_tgt):
         # Return:
         # nodetime2idx_maps: a list of dict {(node index, rounded time string) -> index in embedding look up matrix}
@@ -942,6 +997,8 @@ class PositionEncoder(nn.Module):
                                                                                         tgt_neighbors_node[k], tgt_neighbors_ts[k]):
 
                     src_key_1, src_key_2, tgt_key = makekey(batch_idx, src_node_1, src_ts_1), makekey(batch_idx, src_node_2, src_ts_2), makekey(batch_idx, tgt_node, tgt_ts)
+                    # src_ts, tgt_ts = PositionEncoder.float2str(src_ts), PositionEncoder.float2str(tgt_ts)
+                    # src_key, tgt_key = (src_node, src_ts), (tgt_node, tgt_ts)
                     if src_key_1 not in nodetime2emb:
                         nodetime2emb[src_key_1] = [k+1, 2*n_hop, 2*n_hop]  # 2*n_hop for disconnected case
                     else:
@@ -960,6 +1017,8 @@ class PositionEncoder(nn.Module):
             src_key_1 = makekey(batch_idx, src_1, cut_time)
             src_key_2 = makekey(batch_idx, src_2, cut_time)
             tgt_key = makekey(batch_idx, tgt, cut_time)
+            # src_key = (src, PositionEncoder.float2str(cut_time))
+            # tgt_key = (tgt, PositionEncoder.float2str(cut_time))
             if src_key_1 in nodetime2emb:
                 nodetime2emb[src_key_1][0] = 0
             else:
@@ -977,8 +1036,38 @@ class PositionEncoder(nn.Module):
             null_key = makekey(batch_idx, 0, 0.0)
             nodetime2emb[null_key] = [2 * n_hop, 2 * n_hop, 2 * n_hop]
             # nodetime2emb[(0, PositionEncoder.float2str(0.0))] = [2*n_hop, 2*n_hop] # Fix a big bug with 0.0! Also, very important to keep null node far away from the two end nodes!
-        elif enc in ['lp', 'concat', 'sum_pooling', 'sum_pooling_after']:
+        elif enc == 'lp':
             # landing probability encoding, n_hop+1 types of probabilities for each node
+            # src_neighbors_node, src_neighbors_ts = [[src]] + src_neighbors_node, [[cut_time]] + src_neighbors_ts
+            src_neighbors_node_1, src_neighbors_ts_1 = [[src_1]] + src_neighbors_node_1, [[cut_time]] + src_neighbors_ts_1 
+            src_neighbors_node_2, src_neighbors_ts_2 = [[src_2]] + src_neighbors_node_2, [[cut_time]] + src_neighbors_ts_2
+            tgt_neighbors_node, tgt_neighbors_ts = [[tgt]] + tgt_neighbors_node, [[cut_time]] + tgt_neighbors_ts
+            for k in range(n_hop+1):
+                k_hop_total = len(src_neighbors_node_1[k])
+                # for src_node, src_ts, tgt_node, tgt_ts in zip(src_neighbors_node[k], src_neighbors_ts[k],
+                #                                               tgt_neighbors_node[k], tgt_neighbors_ts[k]):
+                for src_node_1, src_ts_1, src_node_2, src_ts_2, tgt_node, tgt_ts in zip(src_neighbors_node_1[k], src_neighbors_ts_1[k],
+                                                                                        src_neighbors_node_2[k], src_neighbors_ts_2[k],
+                                                                                        tgt_neighbors_node[k], tgt_neighbors_ts[k]):
+                    # src_key, tgt_key = makekey(batch_idx, src_node, src_ts), makekey(batch_idx, tgt_node, tgt_ts)
+                    src_key_1, src_key_2, tgt_key = makekey(batch_idx, src_node_1, src_ts_1), makekey(batch_idx, src_node_2, src_ts_2), makekey(batch_idx, tgt_node, tgt_ts)
+                    # src_ts, tgt_ts = PositionEncoder.float2str(src_ts), PositionEncoder.float2str(tgt_ts)
+                    # src_key, tgt_key = (src_node, src_ts), (tgt_node, tgt_ts)
+                    if src_key_1 not in nodetime2emb:
+                        nodetime2emb[src_key_1] = np.zeros((3, n_hop+1), dtype=np.float32)
+                    if src_key_2 not in nodetime2emb:
+                        nodetime2emb[src_key_2] = np.zeros((3, n_hop+1), dtype=np.float32)
+                    if tgt_key not in nodetime2emb:
+                        nodetime2emb[tgt_key] = np.zeros((3, n_hop+1), dtype=np.float32)
+                    nodetime2emb[src_key_1][0, k] += 1/k_hop_total  # convert into landing probabilities by normalizing with k hop sampling number
+                    nodetime2emb[src_key_2][1, k] += 1/k_hop_total  # convert into landing probabilities by normalizing with k hop sampling number
+                    nodetime2emb[tgt_key][2, k] += 1/k_hop_total  # convert into landing probabilities by normalizing with k hop sampling number
+            null_key = makekey(batch_idx, 0, 0.0)
+            nodetime2emb[null_key] = np.zeros((3, n_hop + 1), dtype=np.float32)
+            
+        elif enc in ['concat', 'sum_pooling', 'sum_pooling_after']:
+            # landing probability encoding, n_hop+1 types of probabilities for each node
+            # src_neighbors_node, src_neighbors_ts = [[src]] + src_neighbors_node, [[cut_time]] + src_neighbors_ts
             src_neighbors_node_1, src_neighbors_ts_1 = [[src_1]] + src_neighbors_node_1, [[cut_time]] + src_neighbors_ts_1 
             src_neighbors_node_2, src_neighbors_ts_2 = [[src_2]] + src_neighbors_node_2, [[cut_time]] + src_neighbors_ts_2
             tgt_neighbors_node, tgt_neighbors_ts = [[tgt]] + tgt_neighbors_node, [[cut_time]] + tgt_neighbors_ts
@@ -1062,6 +1151,7 @@ class PositionEncoder(nn.Module):
                                 self.pattern[walk] = self.pattern_num
                                 self.pattern_num += 1
                             walk_pattern[idx_batch, idx_walk] = self.pattern[walk]
+                            # print(walk)
                         else:
                             """
                             asymmetric
@@ -1081,8 +1171,9 @@ class PositionEncoder(nn.Module):
             encodings = torch.tensor(encodings).to(device)
             walk_encodings = encodings.view(batch, -1, self.num_layers+1, self.num_layers+1)
 
+        common_nodes = 0
         encodings = self.get_trainable_encodings(encodings)
-        return encodings, walk_encodings, walk_pattern
+        return encodings, common_nodes, walk_encodings, walk_pattern
 
     @staticmethod
     def collect_pos_mapping_ptree_sample_mp(args):
@@ -1167,7 +1258,7 @@ class RandomWalkAttention(nn.Module):
     '''
     RandomWalkAttention have two modules: lstm + tranformer-self-attention
     '''
-    def __init__(self, feat_dim, pos_dim, model_dim, out_dim, logger, walk_pool='sum', mutual=False, n_head=8, dropout_p=0.1, walk_linear_out=False, device=None):
+    def __init__(self, feat_dim, pos_dim, model_dim, out_dim, logger, walk_pool='sum', mutual=False, n_head=8, dropout_p=0.1, walk_linear_out=False):
         '''
         masked flags whether or not use only valid temporal walks instead of full walks including null nodes
         '''
@@ -1182,12 +1273,11 @@ class RandomWalkAttention(nn.Module):
         self.n_head = n_head
         self.dropout_p = dropout_p
         self.logger = logger
-        self.device = device
 
         self.feature_encoder = FeatureEncoder(self.feat_dim, self.model_dim, self.dropout_p)  # encode all types of features along each temporal walk
         # triangle
         self.position_encoder = FeatureEncoder(self.pos_dim, self.pos_dim, self.dropout_p)  # encode specifially spatio-temporal features along each temporal walk
-        self.projector = nn.Sequential(nn.Linear(self.feature_encoder.model_dim, self.attn_dim),  # notice that self.feature_encoder.model_dim may not be exactly self.model_dim is its not even number because of the usage of bi-lstm
+        self.projector = nn.Sequential(nn.Linear(self.feature_encoder.model_dim+self.position_encoder.model_dim, self.attn_dim),  # notice that self.feature_encoder.model_dim may not be exactly self.model_dim is its not even number because of the usage of bi-lstm
                                        nn.ReLU(), nn.Dropout(self.dropout_p))  # TODO: whether to add #[, nn.Dropout())]?
         self.self_attention = TransformerEncoderLayer(d_model=self.attn_dim, nhead=self.n_head,
                                                       dim_feedforward=4*self.attn_dim, dropout=self.dropout_p,
@@ -1204,14 +1294,16 @@ class RandomWalkAttention(nn.Module):
         self.pooler = SetPooler(n_features=self.attn_dim, out_features=self.out_dim, dropout_p=self.dropout_p, walk_linear_out=walk_linear_out)
         self.logger.info('bi-lstm actual encoding dim: {} + {}, attention dim: {}, attention heads: {}'.format(self.feature_encoder.model_dim, self.position_encoder.model_dim, self.attn_dim, self.n_head))
 
-    # def forward_one_node(self, hidden_embeddings, time_features, edge_features, position_features, masks=None):
-    def forward_one_node(self, time_features, position_features, masks=None):
+    def forward_one_node(self, hidden_embeddings, time_features, edge_features, position_features, masks=None):
         '''
         Input shape [batch, n_walk, len_walk, *_dim]
         Return shape [batch, n_walk, feat_dim]
         '''
-        combined_features = self.aggregate(time_features, position_features)
+        combined_features = self.aggregate(hidden_embeddings, time_features, edge_features, position_features)
         combined_features = self.feature_encoder(combined_features, masks)
+        if self.pos_dim > 0:
+            position_features = self.position_encoder(position_features, masks)
+            combined_features = torch.cat([combined_features, position_features], dim=-1)
         X = self.projector(combined_features)
         if self.walk_pool == 'sum':
             X = self.pooler(X, agg='mean')  # we are actually doing mean pooling since sum has numerical issues
@@ -1222,13 +1314,25 @@ class RandomWalkAttention(nn.Module):
                 X = self.pooler(X, agg='mean') # we are actually doing mean pooling since sum has numerical issues
             return X
 
-    def aggregate(self, time_features, position_features):
-        device = self.device
+    def mutual_query(self, src_embed_1, src_embed_2, tgt_embed):
+        '''
+        Input shape: [batch, n_walk, feat_dim]
+        '''
+        
+        src_emb = self.mutual_attention_src2tgt(src_embed, tgt_embed)
+        tgt_emb = self.mutual_attention_tgt2src(tgt_embed, src_embed)
+        src_emb = self.pooler(src_emb)
+        tgt_emb = self.pooler(tgt_emb)
+        return src_emb, tgt_emb
+
+    def aggregate(self, hidden_embeddings, time_features, edge_features, position_features):
+        batch, n_walk, len_walk, _ = hidden_embeddings.shape
+        device = hidden_embeddings.device
         if position_features is None:
             assert(self.pos_dim == 0)
-            combined_features = torch.cat([time_features], dim=-1)
+            combined_features = torch.cat([hidden_embeddings, time_features, edge_features], dim=-1)
         else:
-            combined_features = torch.cat([time_features, position_features], dim=-1)
+            combined_features = torch.cat([hidden_embeddings, time_features, edge_features, position_features], dim=-1)
         combined_features = combined_features.to(device)
         assert(combined_features.size(-1) == self.feat_dim)
         return combined_features
@@ -1249,13 +1353,48 @@ class FeatureEncoder(nn.Module):
         X = X.view(batch*n_walk, len_walk, feat_dim)
         if mask is not None:
             lengths = mask.view(batch*n_walk)
-            X = pack_padded_sequence(X, lengths, batch_first=True, enforce_sorted=False)
+            X = pack_padded_sequence(X, lengths.cpu(), batch_first=True, enforce_sorted=False)
         encoded_features = self.lstm_encoder(X)[0]
         if mask is not None:
             encoded_features, lengths = pad_packed_sequence(encoded_features, batch_first=True)
         encoded_features = encoded_features.select(dim=1, index=-1).view(batch, n_walk, self.model_dim)
         encoded_features = self.dropout(encoded_features)
         return encoded_features
+
+# Use different LSTM for each step
+class FeatureEncoder_DifferentRNN(nn.Module):
+    def __init__(self, in_features, hidden_features, length, dropout_p=0.1):
+        super(FeatureEncoder_DifferentRNN, self).__init__()
+        """
+        length : int, m length = m+1 nodes = m+1 LSTM
+        """
+        self.hidden_features_one_direction = hidden_features//2
+        self.model_dim = self.hidden_features_one_direction * 2  # notice that we are using bi-lstm
+        if self.model_dim == 0:  # meaning that this encoder will be use less
+            return
+        self.lstm_encoder_1 = nn.LSTM(input_size=in_features, hidden_size=self.hidden_features_one_direction, batch_first=True, bidirectional=False)
+        self.lstm_encoder = []
+        self.lstm_encoder.append(self.lstm_encoder_1)
+        for i in range(length - 2):
+            self.lstm_encoder.append(nn.LSTM(input_size=self.hidden_features_one_direction, hidden_size=self.hidden_features_one_direction, batch_first=True, bidirectional=False))
+        self.lstm_encoder.append(nn.LSTM(input_size=self.hidden_features_one_direction, hidden_size=self.hidden_features_one_direction, batch_first=True, bidirectional=False))
+        self.dropout = nn.Dropout(dropout_p)
+
+    def forward(self, X, mask=None):
+        batch, n_walk, len_walk, feat_dim = X.shape
+        X = X.view(batch*n_walk, len_walk, feat_dim)
+        if mask is not None:
+            lengths = mask.view(batch*n_walk)
+            X = pack_padded_sequence(X, lengths.cpu(), batch_first=True, enforce_sorted=False)
+        for i in self.lstm_encoder:
+            X = i(X)[0]
+        encoded_features = X
+        if mask is not None:
+            encoded_features, lengths = pad_packed_sequence(encoded_features, batch_first=True)
+        encoded_features = encoded_features.select(dim=1, index=-1).view(batch, n_walk, self.model_dim)
+        encoded_features = self.dropout(encoded_features)
+        return encoded_features
+
 
 
 class SetPooler(nn.Module):
