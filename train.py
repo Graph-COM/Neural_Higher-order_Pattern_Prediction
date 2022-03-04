@@ -16,7 +16,7 @@ import os
 
 def train_val(dataset, model, mode, bs, epochs, criterion, optimizer, early_stopper, ngh_finders, logger, interpretation=False, time_prediction=False):
     partial_ngh_finder, full_ngh_finder = ngh_finders
-    device = model.device
+    device = model.n_feat_th.data.device
     num_instance = dataset.get_size()
     num_batch = math.ceil(num_instance / bs)
     dataset.set_batch_size(bs)
@@ -38,7 +38,8 @@ def train_val(dataset, model, mode, bs, epochs, criterion, optimizer, early_stop
         acc, ap, f1, auc, m_loss = [], [], [], [], []
         logger.info('start {} epoch'.format(epoch))
         NLL_total = None
-        
+        MSE_total = None
+        MAE_total = None
         y_true, y_pred, y_one_hot_np = None, None, None
 
         for k in tqdm(range(int(num_batch))):
@@ -46,10 +47,10 @@ def train_val(dataset, model, mode, bs, epochs, criterion, optimizer, early_stop
             
             model.train()
             optimizer.zero_grad()
-            if time_prediction: 
+            if time_prediction:
                 true_label_torch = torch.from_numpy(true_label).to(device)
                 _pred_score, _ = model.contrast(src_1_l_cut, src_2_l_cut, dst_l_cut, ts_l_cut, e_l_cut, endtime_pos=true_label_torch)   # the core training code
-                ave_log_t, pred_score, _ = _pred_score
+                ave_mae_t, ave_log_t, pred_score, _ = _pred_score
             else:
                 true_label_torch = torch.from_numpy(true_label).long().to(device)
                 pred_score, _ = model.contrast(src_1_l_cut, src_2_l_cut, dst_l_cut, ts_l_cut, e_l_cut)   # the core training code
@@ -70,10 +71,12 @@ def train_val(dataset, model, mode, bs, epochs, criterion, optimizer, early_stop
                 if time_prediction:
                     if NLL_total is None:
                         NLL_total = pred_score
-                        MSE = ave_log_t
+                        MSE_total = ave_log_t
+                        MAE_total = ave_mae_t
                     else:
                         NLL_total += pred_score
-                        MSE += ave_log_t
+                        MSE_total += ave_log_t
+                        MAE_total += ave_mae_t
                 else:
                     pred_label = torch.argmax(pred_score, dim=1).cpu().detach().numpy()
                     acc.append((pred_label == true_label).mean())
@@ -93,8 +96,9 @@ def train_val(dataset, model, mode, bs, epochs, criterion, optimizer, early_stop
                         pred_score_np = np.concatenate((pred_score_np, torch.nn.functional.softmax(pred_score, dim=1).cpu().numpy()))
         if time_prediction:
             print("train")
-            print(NLL_total/dataset.get_size())
-            print(MSE/dataset.get_size())
+            print('NLL', NLL_total/dataset.get_size())
+            print('MSE', MSE_total/dataset.get_size())
+            print('MAE', MAE_total/dataset.get_size())
         else:
             print("train")
             cm = confusion_matrix(y_true, y_pred)
@@ -107,8 +111,10 @@ def train_val(dataset, model, mode, bs, epochs, criterion, optimizer, early_stop
         
         if time_prediction:
             
-            NLL_loss, num, time_predicted_total, time_gt_total = eval_one_epoch('val for {} nodes'.format(mode), model, dataset, val_flag='val',interpretation=interpretation, time_prediction=time_prediction)
-            logger.info('val NLL: {}  Number: {}'.format(NLL_loss, num))
+            NLL_loss, MSE_loss, MAE_loss, num, time_predicted_total, time_gt_total = eval_one_epoch('val for {} nodes'.format(mode), model, dataset, val_flag='val',interpretation=interpretation, time_prediction=time_prediction)
+            logger.info('val NLL: {}  Number: {}'.format(NLL_loss / num, num))
+            logger.info('val MSE: {}  Number: {}'.format(MSE_loss / num, num))
+            logger.info('val MAE: {}  Number: {}'.format(MAE_loss / num, num))
             val_auc = -NLL_loss.cpu().numpy()
         else:
             val_acc, val_ap, val_f1, val_auc, cm = eval_one_epoch('val for {} nodes'.format(mode), model, dataset, val_flag='val',interpretation=interpretation, time_prediction=time_prediction)
@@ -116,11 +122,22 @@ def train_val(dataset, model, mode, bs, epochs, criterion, optimizer, early_stop
             logger.info(', '.join(str(r) for r in cm.reshape(1,-1)))
         model.update_ngh_finder(full_ngh_finder)
         if time_prediction:
-            test_NLL, num, time_predicted_total, time_gt_total = eval_one_epoch('test for {} nodes'.format(mode), model, dataset, val_flag='test',interpretation=interpretation, time_prediction=time_prediction)
+            NLL_loss, MSE_loss, MAE_loss, num, time_predicted_total, time_gt_total = eval_one_epoch('test for {} nodes'.format(mode), model, dataset, val_flag='test',interpretation=interpretation, time_prediction=time_prediction)
             time_predicted_total = np.exp(time_predicted_total)
-            time_gt_total = np.exp(time_gt_total)            
-            logger.info('test NLL: {}'.format(test_NLL))
+            time_gt_total = np.exp(time_gt_total)
+            # file_addr = './Histogram/'+dataset.DATA+'-'+str(dataset.time_prediction_type)+'/'
+            # if not os.path.exists(file_addr):
+            #     os.makedirs(file_addr)
             
+            # with open(file_addr+'time_prediction_histogram'+str(epoch), 'wb') as f:
+            #     np.save(f, np.array([time_predicted_total, time_gt_total]))
+            # histogram.plot_hist_multi([time_predicted_total, time_gt_total], bins=50, figure_title='Time Prediction Histogram'+str(epoch), file_addr=file_addr, label=['Ours', 'Groundtruth'])
+            
+            # logger.info('test NLL: {}'.format(test_NLL))
+            logger.info('test NLL: {}  Number: {}'.format(NLL_loss / num, num))
+            logger.info('test MSE: {}  Number: {}'.format(MSE_loss / num, num))
+            logger.info('test MAE: {}  Number: {}'.format(MAE_loss / num, num))
+
         else:
             val_acc_t, val_ap_t, val_f1_t, val_auc_t, cm = eval_one_epoch('val for {} nodes'.format(mode), model, dataset, val_flag='test',interpretation=interpretation, time_prediction=time_prediction)
             logger.info('confusion matrix: ')
