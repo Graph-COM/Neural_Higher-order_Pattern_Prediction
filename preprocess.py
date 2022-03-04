@@ -100,7 +100,7 @@ for idx_y in y:
         for ed in node_list[idx_st+1:]:
             node_bool[node2idx[st]] = 1
             node_bool[node2idx[ed]] = 1
-            # fout.write("%s,%s,%s,%s,%s,%s\n" %(edge_idx, node2idx[st], node2idx[ed], times[idx_y], simplex_idx, edge_idx + 1))
+            fout.write("%s,%s,%s,%s,%s,%s\n" %(edge_idx, node2idx[st], node2idx[ed], times[idx_y], simplex_idx, edge_idx + 1))
             
             edge_idx += 1
 
