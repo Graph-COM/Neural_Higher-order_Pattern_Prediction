@@ -33,7 +33,7 @@ file_name = DATA
 
 fout = open('./processed/ml_' + file_name + '.csv', 'w')
 fout.write(',u,i,ts,label,idx\n')
-file_addr = './' + file_name + '/' + file_name
+file_addr = './data/' + file_name + '/' + file_name
 
 fin_nverts = open(file_addr + '-nverts.txt', 'r')
 fin_simplices = open(file_addr + '-simplices.txt', 'r')
