@@ -43,6 +43,13 @@ Before running the code, check if ./log exists. If not,
 mkdir log
 ```
 
+We also prepare the threads-ask-ubuntu dataset for the demo(about 500MB), which can be found [here](https://drive.google.com/file/d/1DIi85QTdmTwOMPtoYYDdFNE9fx8pOCtx/view?usp=sharing). After download the dataset, moved the triplet.npy to the folder ./saved_triplets/threads-ask-ubuntu/threads-ask-ubuntu_0.4_0.1/ . Then you can run the code with the following tasks, e.g.,
+```{bash}
+python main.py -d threads-ask-ubuntu
+```
+
+triplet.npy should contains all different closures, triangles, wedges and edges given t and T_W. However, it will be too large to save them all. Thus we only choose part of them and trained our model based on the sampling datasets. Based on the experiment, this will not affect the performance too much. More detailed information regarding how we sample the data can be found in cut_dataset.py .
+
 After preprocessing the dataset, we can run the code for three different questions.
 ## For Q1 type prediction
 The task aims to solve the Q1 in the paper. What type of high-order interaction will most likely appear among u,v,w within (t, t + T_W]?
@@ -99,7 +106,7 @@ Our model achieves the following performance. The performance is 1-vs-1 AUC (mea
 
 | Model name         |     tags-math-sx    |  tags-ask-ubuntu  |   congress-bills   |       DAWN       |   threads-ask-ubuntu  |
 | ------------------ | ------------------- | ----------------- | ------------------ | ---------------- | --------------------- |
-| HIT                |     77.05 ± 0.31    |    81.62 ± 0.69   |    81.10 ± 0.26    |   76.50 ± 0.79   |      86.25 ± 0.15     |
+| HIT                |     74.07 ± 0.46    |    78.83 ± 0.43   |    79.83 ± 0.61    |   78.92 ± 0.61   |      84.22 ± 0.68     |
 
 ## When will such a type of interaction appear?
 
@@ -139,3 +146,15 @@ prepare for the HIT model, finding high-order patterns
 
 ## parser.py
 parsers
+
+# Citation
+Please cite our paper if you like or use our work for your research, thank you very much!
+```
+@inproceedings{liu2021neural,
+  title={Neural Predicting Higher-order Patterns in Temporal Networks},
+  author={Liu, Yunyu and Ma, Jianzhu and Li, Pan},
+  booktitle={WWW},
+  year={2022}
+}
+```
+
